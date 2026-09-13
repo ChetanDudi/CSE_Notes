@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<data>
+  <row>
+    <id>1</id>
+    <name>Alice</name>
+    <age>22</age>
+    <city>Hyderabad</city>
+    <course>BTech</course>
+  </row>
+  <row>
+    <id>2</id>
+    <name>Bob</name>
+    <age>25</age>
+    <city>Delhi</city>
+    <course>BTech</course>
+  </row>
+  <row>
+    <id>3</id>
+    <name>Charlie</name>
+    <age>20</age>
+    <city>Mumbai</city>
+    <course>BSc</course>
+  </row>
+  <row>
+    <id>4</id>
+    <name>David</name>
+    <age>28</age>
+    <city>Bengaluru</city>
+    <course>MTech</course>
+  </row>
+</data>

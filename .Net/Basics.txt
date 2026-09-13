@@ -1,0 +1,37 @@
+-->.NET is a free, open-source development platform by Microsoft for building:
+    1:Web apps
+    2:APIs
+    3:Desktop apps
+    4:Mobile apps
+    5:Cloud & microservices
+    -->Think of .NET as the engine that runs your applications.
+
+-->.NET is the runtime + libraries
+    -->Languages on .NET:
+        C#, F#, VB.NET
+
+-->How .NET Code Runs:
+    Step-by-step:
+        1:You write code in C#
+        2:Compiler converts it to IL (Intermediate Language)
+        3:CLR executes IL
+        4:JIT converts IL → machine code
+        
+-->.NET Key components:
+    1:CLR (Common Language Runtime):CLR is the execution engine of .NET.
+        CLR = Operating manager of your .NET program
+        CLR is responsible for:
+            1:Running .NET applications
+            2:Managing memory
+            3:Handling exceptions
+            4:Enforcing security
+            5:Managing threads
+            6:Performing garbage collection
+        Your .NET code never runs directly on the OS, it always runs inside the CLR.
+    2:JIT (Just-In-Time compiler):JIT converts IL → native machine code (CPU-specific).
+        Happens at runtime.
+        JIT Compiles only the methods that are actually used.
+    3:IL (Intermediate Language):IL = Universal language understood by CLR.
+        IL (also called MSIL / CIL) is a CPU-independent intermediate code.
+        This happens at compile time, not runtime.
+    4:GC (Garbage Collector):GC automatically manages memory by removing unused objects.

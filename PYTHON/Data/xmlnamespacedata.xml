@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<students xmlns:s="http://example.com/student">
+
+    <s:student>
+        <s:id>1</s:id>
+        <s:name>Alice</s:name>
+        <s:age>22</s:age>
+        <s:city>Hyderabad</s:city>
+        <s:course>BTech</s:course>
+    </s:student>
+
+    <s:student>
+        <s:id>2</s:id>
+        <s:name>Bob</s:name>
+        <s:age>25</s:age>
+        <s:city>Delhi</s:city>
+        <s:course>BTech</s:course>
+    </s:student>
+
+    <s:student>
+        <s:id>3</s:id>
+        <s:name>Charlie</s:name>
+        <s:age>20</s:age>
+        <s:city>Mumbai</s:city>
+        <s:course>BSc</s:course>
+    </s:student>
+
+    <s:student>
+        <s:id>4</s:id>
+        <s:name>David</s:name>
+        <s:age>28</s:age>
+        <s:city>Bengaluru</s:city>
+        <s:course>MTech</s:course>
+    </s:student>
+
+</students>

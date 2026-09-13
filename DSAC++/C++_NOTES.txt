@@ -1,0 +1,290 @@
+#include<iostream>
+using namespace std;
+
+-->LIMITS: 
+        Use #include<climits>
+        INT_MAX, INT_MIN, LONG_MIN, LONG_MAX;
+        Use #include<cfloat>
+        FLT_MAX, FLT_MIN, DBL_MIN, DBL_MAX;
+
+-->SORTING:#include<algorithm>
+        sort(arr,arr+n);//ascending order sorting
+        sort(arr,arr+n,greater<int>());//descending order sorting
+        sort(vec.begin(),vec,end());//ascending order sorting
+        sort(vec.begin,vec.end(),greater<int>());//descending order sorting
+
+-->OUTPUT:
+        cout << "Chetan" << endl
+        cout << "Chetan" << "\n"
+        cout << "Chetan\n"
+
+-->INPUT:
+        int a;
+        cin>>a;
+-->Size:
+        sizeof(age);
+
+-->Data types:
+        int(4B), char(1B), float(4B), double(8B), bool(1B)
+
+-->TYPE CASTING:
+        float a=24.67;
+        int b=(int)a;
+
+-->Logical Operators:
+        OR: ||
+        AND: &&
+        NOT: !
+
+-->VECTORS:
+       include library as #include<vector>
+       vector<int>vector_name;
+       vector<int>vector_name={1,5,-2,5,6};
+       vector<int>vector_name(size,initialised value);
+       Size: vector_name.size();
+       Capacity: vector_name.capacity();//If current vector is full then its cpacity increses by twice of it's current size
+                Ex: vector.push_back(1)-->size=1,capacity=1
+                    vector.push_back(2)-->size=2,capacity=2
+                    vector.push_back(3)-->size=3,capacity=4
+                    vector.push_back(4)-->size=4,capacity=4
+                    vector.push_back(-1)-->size=5,capacity=8  
+       Push: vector_name.push_back(value);//push value into the vector at the end position
+       Pop: vector_name.pop_back();//pop value from the vector from the end position
+       vector_name.clear();// clear the vector or deletes all elements of the vector //changes size but not capacity
+       vector_name.empty();// check whether the vector is empty or not(return 1 or 0)
+       vector_name.erase(start,end);//Ex:vector_name.erase(vector_name.begin()+2,vector_name.begin()+5) erase elements in a range(start is included but not end)//changes size but not capacity
+       vector_name.insert(position,val); //Ex:vector_name(vector_name.begin()+3,-11)
+       vector_name.begin():points to the first value of the vector(index=0)
+       vector_name.end():points to the next address of the last value of the vector(an throw any random value)(index=n)
+       Sorting:std::sort(vector_name.begin(),vector_name.end());
+       Iterator: for(int x : vector_name)
+                     {
+                        cout<< x << " ";//It will print all elements of vector one by one
+                     }
+
+-->2D VECTOR:   
+        vector<vector<int>> matrix;
+        for(int i=0;i<matrix.size();i++)
+        {
+                for(int j=0;j<matrix[i].size();j++)
+                {
+                        //operation
+                }
+        }
+        Number of rows=matrix.size();
+        Number of columns=matrix[i].size()//gives you the number of cloumns in that ith  row
+        Diagonal elements: (j==i)-->Primary Diagonal and  (j=n-i-1)-->Secondary Diagonal
+        Initialising 2D matrix using another matrix: vector<vector<int>>grid(matrix.size(),vector<int>(matrix[0].size(),0));
+        Row major form of a element of a grid: index=row_index*size_of_grid+column_index //reverse: row=index/size_of_grid , column=index%size_of_grid
+       
+-->ARRAY:
+      #include<algrithm> //add this to use sorting
+      Sorting: std::sort(array_name,array_name+array_size);
+      Maximum size of array inside main is 10^6 and for booleans arrays it is 10^7
+      Maximum size of array outside main(globally) is 10^7 and if it is boolean then it is 10^8
+      If array is declared inside main or any function, then it stored random garbage values if it is not manually initialised by any values
+      If array is outside fns or main, which means it is global, then it is initialised with zero.
+
+-->PAIR:// no need pair to be of same data type for both values
+        pair<int,int> p={3,5};
+        pair<int,string>p={3,"chetan"};
+        p.first //gives the first ele of the pair p
+        p.second //gives the second ele of the pair p
+
+-->List:It is implemented as a Doubly Linked List
+        //use #include<list>
+        list<int>list_name={1,2,3}
+        //for traversing, use: for(int val:list_name)
+                                 {
+                                        cout<<val<<" ";
+                                 }
+        list_name.push_back(val)
+        list_name.push_front(val)
+        list_name.pop_front()
+        list_name.pop_front()
+        list_name.insert(pos,val)
+        list_name.erase(pos)
+        list_name.erase(iterator start,iterator end)
+        list_name.clear()
+        list_name.size()
+        list_name.empty()
+        list<int>::iterator it = list_name.begin();//iterator for the list
+        advance(it, 2);-> list_name.insert(it,val); // move iterator 2 steps forward
+
+-->STACK:
+        stack<int>s;
+        s.push(ele); // insert element into stack
+        s.pop(); // delete topmost element from stack
+        s.top(); // give the topmost ele
+        s.size(); //size of the stack
+        s1.swap(s2); // this function make s1=s2 and s2=s1
+        s.empty();//tells whether stack is empty or not
+
+-->QUEUE:
+        queue<int>q;
+        q.push(ele); // insert element into queue
+        q.pop(); // delete topmost element from queue
+        q.front(); // give the topmost ele
+        q.back(); // give the last ele
+        q.size(); //size of the queue
+        q.empty(); //tells whether the queue is empty or not
+        q1.swap(q2); // this function make s1=s2 and s2=s1
+
+-->PRIORITY QUEUE://By default the priority is given to the largest element
+        priority_queue<int>q;
+        q.push(ele); // insert element into stack
+        q.pop(); // delete topmost element from stack
+        q.top(); // give the topmost ele
+        q.size(); //size of the queue
+        q.empty(); //tells whether the queue is empty or not
+
+-->MAP:
+        map<int,int>m;  //first type is of key and second is if value
+        m[key]=value; //insert or change
+        m.insert({1,2});
+        m.emplace(1,2);
+        m.count("key_name");//return the number of keys in map
+        m.erase("key_name);//delete key from the map.
+        m.empty();//check whether map is empty or not
+        m.find("Key_name");if found then it returns its iterator otherwise we get m.end();
+        To traverse:
+                for(auto i : map_name)
+                {
+                        cout<<i.first<<" "<<i.second<<endl;//data will be print in sorting order acc. to keys
+                }
+        for unordered or ordered map m:
+                m.find(val)//this will find val in the map and if it returns m.end() then the val is not present in the map otherwise present
+
+-->SET:
+        set<int>s;
+        s.insert(ele);
+        s.size();
+        m.count(ele);//return the number of keys in map
+        m.erase(ele);//delete key from the map.
+        m.empty();//check whether map is empty or not
+        m.find(ele);if found then it returns its iterator otherwise we get map_name.end();[m.find(ele)!=m.end()]
+        s.lower_bound(val);//return val if present in set and if val is not present then gives the nearest lowest value to val
+        s.upper_bound(val);//return val greater than the given val in the set
+                *(s.lower_bound(val));//and same for upper_bound
+        To traverse:
+                for(auto i : set_name)
+                {
+                        cout<<i<<endl;//data will be print in sorting order acc. to keys
+                }
+
+-->REVERSE VECTOR:
+        reverse(vec.begi (),vec.end());
+
+-->PERMUTATIONS:(use #include<algorithm>)
+        next permutation=next_permutation(s.begin(),s.end());
+        previous permutation=prev_permutation(s.begin(),s.end());
+
+-->STRING:
+        cin.getline(string,no_of_characters,deliminator); //EX:cin.getline(str,20,'\n') (for character array)
+        getline(cin,string,deliminator); // for a complete sentence
+        can compare like:str1==str2 , str1>str2, str1<str2
+        str.length();
+        reverse(str.begin(),str.end());
+        tolower(str[i]);//converts uppercase to lower case
+        string_name.find(substring);//this gives the first substring character index in the original string
+        str.erase(starting_pos,length_of_deleting_substring);
+        to_string(integer);//converts an integer into a string
+        stoi(string); converts string to integer
+        string_name.find(substring);//using this we can find any substring(a char too) in string_name string, it returns the position/index of the first matched character of the substring in the main string otherwise it doesnt return anything
+                //s.find(string)!=string::npos ->It return true if substring found otherwise false
+                s.substr(pos,len) ->It returns the substring which matches it
+
+-->MATH:
+        To find number of digits in a given number, we can use (int)(log10(n)+1);
+        a*b=gcd(a,c)*lcm(a,b);
+        ceil: ceil(a): return the ceil of a number as double type (Ex:ceil(4.3)=5, ceil(4)=4)
+        floor: floor(a): return the floor of a number as double type(Ex:floor(4.3)=4, floor(4)=4)
+
+
+-->TREE:
+        Preorder:Root,Left,Right
+        Inorder:Left,Root,Right
+        Postorder:Left,Right,Root
+	Inorder Traversal for Binary Search Tree(BST) is always a sorted order of the tree nodes'value.
+
+-->GRAPH:
+        Topological sorting:Can be performed only for Directed Acyclic Graph(DAG).
+        Linear ordering of vertices such that for every directed edge u->v, vertex u comes before v in that ordering.
+        Helpful for dependencies solving like prerequesites in courses.
+
+-->Scheduler in Process States:
+        1:Job Scheduler(Long Term Scheduler):Disk->NEW State->Ready State(manage Degree of Multiprogramming)
+        2:CPU Scheduler(Short Term Scheduler):Ready State->Running State
+
+-->Maps and Unordered Maps — Complete Theory
+1. Map: A map is an associative container that stores data in key-value pairs.
+        Each key is unique and is used to identify its corresponding value.
+        A map keeps all keys in sorted order by default.
+        Internally, map is generally implemented using a Red-Black Tree, which is a self-balancing Binary Search Tree (BST).
+        In a BST, smaller keys are placed on the left and larger keys on the right.
+        A normal BST can become skewed and have O(n) height. A Red-Black Tree prevents this by maintaining balance using red/black coloring, recoloring, and tree rotations.
+        Important Red-Black Tree properties include:
+                Every node is either red or black.
+                The root is black.
+                NULL/NIL leaves are considered black.
+                A red node cannot have a red child.
+                Every path from a node to its descendant NIL leaves contains the same number of black nodes.
+                These rules keep the height of the tree O(log n).
+        Since searching, inserting and deleting require traversing the tree, these operations take O(log n) time.
+        map maintains ordering, so elements can be traversed from the smallest key to the largest key.
+        It also supports ordered operations such as lower_bound() and upper_bound().
+        map is preferred when ordering is important or when guaranteed O(log n) performance is required.
+
+        Time Complexity:
+                Operation	Complexity
+                Search / Fetch	O(log n)
+                Insertion	O(log n)
+                Deletion	O(log n)
+                Traversal	O(n)
+
+        Key idea:
+        Map → Red-Black Tree → Balanced Tree → Sorted → O(log n)
+
+2. Unordered Map: An unordered map is an associative container that stores data in key-value pairs.
+        Each key is unique, but unlike map, the keys are not stored in sorted order.
+        It is generally implemented using a Hash Table.
+        A hash table consists of multiple buckets where key-value pairs are stored.
+        A hash function converts a key into a bucket/index where the corresponding element should be stored.
+        Because the bucket can usually be determined directly from the key, searching, inserting and deleting are O(1) on average.
+        However, different keys can produce the same bucket. This is called a collision.
+        When collisions occur, multiple elements are stored in the same bucket and the required key may need to be searched among them.
+        If collisions are limited, lookup remains close to O(1).
+        In the worst case, many or all keys can end up in the same bucket. The container may then need to examine the elements one by one. Therefore, worst-case complexity can become O(n).
+        An unordered map also uses a load factor, which represents how full the hash table is. A high load factor can lead to more collisions.
+        When necessary, the hash table performs rehashing, where the number of buckets is increased and existing elements are redistributed according to their hash values.
+        Rehashing can make an individual operation expensive, but insertion is O(1) on average/amortized.
+        unordered_map is preferred when fast key-based lookup is more important than ordering.
+
+        Time Complexity:
+                Operation	Average	Worst Case
+                Search / Fetch	O(1)	O(n)
+                Insertion	O(1)	O(n)
+                Deletion	O(1)	O(n)
+
+        Why worst-case O(n)?
+        If many keys collide into the same bucket, the hash table may have to check n elements one by one, making the operation O(n).
+
+        Key idea:
+        Unordered Map → Hash Table → No Ordering → O(1) Average → O(n) Worst Case
+
+-->Map vs Unordered Map — Final Comparison
+        Feature	                        map	                        unordered_map
+        Stores	                Key-value pairs	                        Key-value pairs
+        Keys	                Unique	                                Unique
+        Order	                Sorted	                                Unordered
+        Internal structure	Red-Black Tree	                        Hash Table
+        Search	                O(log n)	                        O(1) average
+        Insert	                O(log n)	                        O(1) average
+        Delete	                O(log n)	                        O(1) average
+        Worst-case search	O(log n)	                        O(n)
+        lower_bound()           ✅	                                ❌
+        upper_bound()	        ✅	                                ❌
+        Ordered traversal	✅	                                ❌
+        Main advantage	        Ordering + guaranteed complexity	Fast average lookup
+        Main disadvantage	Slower than hash table on average	No ordering + possible collisions
+       

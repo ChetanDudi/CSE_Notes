@@ -1,0 +1,431 @@
+-->VARIABLES:
+        name="Chetan"
+        age=21
+        CGPA=7.55
+        intern=False
+        col_gf=None
+-->PRINT Function:
+            print("name") -->OUTPUT:name   (name is considered as a string here)
+            print(name)   -->OUTPUT:Chetan (name is considered as a variable here)
+            print("My name is ",name)  -->OUTPUT:My name is Chetan
+-->TYPE Function:
+            print(type(name))  -->OUTPUT:<class 'str'>
+            print(type(age))   -->OUTPUT:<class 'int'>
+            print(type(CGPA))  -->OUTPUT:<class 'float'>
+            print(type(intern))-->OUTPUT:<class 'bool'>
+            print(type(col_gf))-->OUTPUT:<class 'NoneType'>
+
+-->EXPRESSIONS:
+        a=2
+        str="che"
+        b=3
+        print(type(a*str*b))-->OUTPUT:<class 'str'>
+        print(a*str*b)    -->OUTPUT:chechechechecheche
+
+        str1="che"
+        str2="tan"
+        print(str1+str2)-->OUTPUT:chetan
+
+        a,b,c=2,3,-7 -->Implies that a=2 and b=3 and c=6
+        print(b/a) -->OUTPUT:1.5(also a and b are integers but the output is float)
+        print(b//a)-->OUTPUT:1(integer division)
+        print(c//a)-->OUTPUT:-4(inter division gives floor after division)
+
+        a,b=2,5
+        print(b%a)       -->OUTPUT:1
+        print((-b)%(-a)) -->OUTPUT:-1
+        print(b%(-a))    -->OUTPUT:-1
+        print((-b)%a)    -->OUTPUT:1
+
+-->COMMENTS:
+        #This is a comment
+        """This is a multi comment line
+           for multiple comment lines"""
+
+-->INPUT:
+        str input:   input()
+        int input:   int(input())
+        float input: int (input())
+
+-->CONDITIONS:
+         if(condition):
+            statement
+         elif(condition):
+            statement
+         else:
+            statement
+
+-->STRING:
+        Strings are immutable in python(we can't change value of string's character at any index)
+        we can change it completely but we can't change it's characters.
+        Concatenation:print("che"+"tan")     -->OUTPUT:chetan
+        Length       :print(len("I am Chetan"))-->OUTPUT:11
+        Slicing      :str[starting index:ending index]#ending index is not included
+                      EX:str="chetan"-->print(str[2:5]):OUTPUT:eta
+                      str[:x]-->str[0:x]
+                      str[x:]-->str[x:len(str)]
+        str.endswith("part_of_string"):if string ends with that part then it returns True otherwise returns False(here str is the name of the string)
+        str.capitalize():Makes the first letter of str capital but does not change that str, insteadof this it creates new string and change in that string. To make change in that string, do:str=str.capitalize()
+        str.replace(old,new):Replace old substring with new substring but do not change the old string(similarly as str.capitalize )
+        str.find(substring):Returns the index of the first letter of substring if the substring present otherwise returns -1
+        str.count("substring):Count the number of substring in str
+
+-->LIST:
+        List are mutable in python
+        Syntax:list=[24,"chetan",45.5]
+        Slicing:List[starting index:ending index](Endind index is not included)
+        list.append(element/another list):add a value/list in the list at the end (in case of list it adds that list as that list only)
+                ex: list=[1,2,3] 
+                    list.append(4)
+                    print(list)-->OUTPUT:[1,2,3,4]
+                    list.append([5,6])
+                    print(list)-->OUTPUT:[1,2,3,4,[5,6]]
+        list.extend(element/another list):add a value/list in the list at the end (in case of list it adds each element of that list)
+                ex: list=[1,2,3]
+                    list.extend(4)
+                    print(list)-->OUTPUT:[1,2,3,4]
+                    list.extend([5,6])
+                    print(list)-->OUTPUT:[1,2,3,4,5,6]
+        list.sort():Sort the list in ascending order
+        list.sort(reverse=True):Sort the list in descending order
+        list.reverse():Reverse the list
+        list.insert(index,ele):insert element at given index
+        list.remove(element):remove the first occurence of the element
+        list.pop(index):delete the element at the given index
+        list.copy():creates the copy of a given list
+        list.count(element):count the occurence of given element
+        len(list_name):returns the length of list
+        print(list_name[:]): print all elements of the List
+        print(list_name[idx1:idx2]): print all elements starting from index idx1 to idx2-1
+        Traverse: for i in list_name
+                        print(i)
+
+-->SET: It is an unordered collection of unique elements and it is mutable, iterable and has no duplicate collections.
+        Syntax:set={1,2,3,"Chetan"}
+        Can't traverse set using indexing like set_name[index] and also can't assign values using indexing like set_name[index]=value
+        set_name.add(element): It adds element in the set in sorted order at its sorted index
+        set_name.remove(element): It removes the element from the set
+        set2.intersection(set1): It gives the common elements in both sets
+        set2.union(set1): It gives all elements from both sets only once
+        set2.difference(set1): It gives items in Set 2 but NOT in Set 1
+        set2.symmetric_difference(set1): It gives items in A or B, but NOT in both
+
+-->TUPLE:
+         Tuples are immutable in python
+         Syntax:tuple=(1,3,6)
+         tuple.index(ele):returns the first occurence index of that ele
+         tuple.count(ele):returns the count of that ele in tuple
+
+-->DICTIONARY:
+        Dictionary is mutable in python and don't allow duplicate keys
+        Dict[key:definition]
+        info={
+                "name":"Chetan",
+                "age":21,
+                "college":"IIT Ropar",
+                "Department":"CS",
+                "CGPA":7.55,
+                "Subjects":["DSA","Database","Algorithms","PPP","ANN","Computer Architecture","OS"],
+                "Certificates":("IYSC","TSP")
+             }
+
+        dict_name.items(): It gives all the items of the dictionary (Key-Value pairs)
+        dict_name.keys(): It gives all the keys of the dictionary
+        dict_name.values(): It gives all the values
+        dict_name.pop(Key): It deletes that key with its value
+
+-->Python is dynamically typed → you don't need to declare variable types, and a variable can refer to objects of different types during execution.
+        Type is checked at the runtime.
+        a=10
+        print(type(a))-->OUTPUT:<class 'int'>
+        a="chetan"
+        print(type(a))-->OUTPUT:<class 'str'>
+
+-->Python is strongly typed → incompatible types cannot generally be combined automatically.
+        a=10
+        str="Chetan"
+        print(a+str)-->OUTPUT:TypeError: unsupported operand type(s) for +: 'int' and 'str
+
+        Dynamic ≠ weak. Dynamic typing describes when types are determined/checked, while strong typing describes how strictly types are handled.
+        Therefore, the correct statement is: Python is a dynamically typed and strongly typed programming language.
+
+-->'==' (Equality Operator):value Comparison
+The == operator is used to compare the values or contents of two objects. It returns True if the values are equal, otherwise False.
+        Ex: a=2 
+            b=2 
+            print(a==b)-->OUTPUT:True
+            print(a!=b)-->OUTPUT:False
+            print(a is b)-->OUTPUT:True
+            print(a is not b)-->OUTPUT:False
+
+-->'is' (Identity Operator):Memory Location
+The is operator is used to check whether two variables refer to the same object in memory. It returns True if both variables point to the same object, otherwise False.
+Can use id(variable_name) for seeing memeory location of variable
+        Ex:a=[1,2,3]
+           b=[1,2,3]
+           print(a==b)-->OUTPUT:True
+           print(a is b)-->OUTPUT:False
+           b=a
+           print(a is b)-->OUTPUT:True
+
+        Summary
+        == → compares value
+        is → compares object identity 
+
+-->Inbuilt Mathematical Functions: To use these fns, always write : from math import *
+(i) Absolute: abs(number) : It always gives the number only ignoring the sign of that number
+        ex: abs(11.3)=11.3, abs(-11.3)=11.3
+
+(ii) Floating Absolute: fabs(number) : It returns the floating absolute value of that number
+        ex: fabs(11.3)=11.3, fabs(-11.3)=11.3, fabs(11)=11.0, fabs(-11)=11.0
+
+
+(iii) Ceil: ceil(number) : It returns the ceiling value of that number
+        ex: ceil(11.3)=12, ceil(-11.3)=-11
+
+(iv) Floor: floor(number) : It returns the floor value of that number
+        ex: floor(11.3)=11, floor(-11.3)=-12
+
+(v) Factorial: factorial(number) : It returns the factorial value of that number
+        ex: factorial(5)=120
+
+(vi) Maximum: max(number1,number2,number3,...) : It return the maximum number from the all arguments
+        ex: max(1,2,3,4,5)=5
+
+(vii) Minimum: min(number1,number2,number3,...) : It return the minimum number from the all arguments
+        ex: min(1,2,3,4,5)=1
+
+(viii) Round: round(number) : It returns the rounded value of the number
+        ex: round(11.3)=11, round(-11.3)=-11
+
+(ix) Exp: exp(number) : It returns the exponential value of the number
+        ex: exp(2)=7.38905609893065
+
+(x) Log: log(number) : It returns the natural logarithm of the number
+        ex: log(2)=0.6931471805599453
+        For changing base, use log(number,base) or logbase(number)
+
+(xi) Pow: pow(base,exponent): It returns a floating value as a result for power of base as per exponential
+        ex: pow(2,3)=8.0
+        If we use base**exponent: It returns int values
+        ex: 2**3=8
+        math.pow() always returns a floating-point value (float).
+        Built-in pow() returns a result whose type depends on its arguments.
+        ** is Python's exponentiation operator and generally preserves the numeric type appropriately.
+
+(xii) Sqrt: sqrt(number): It returns the square root of the number
+        ex: sqrt(4)=2.0
+
+(xiii) Trigonometric Functions: Arguments in radians, not in degrees
+        Radian=Degree*(pi/180)
+        -->sin(number): It returns the sine of the number
+        -->cos(number): It returns the cosine of the number
+        -->tan(number): It returns the tangent of the number
+
+(xiv) Hyperbolic Functions:
+        -->sinh(number): It returns the hyperbolic sine of the number
+        -->cosh(number): It returns the hyperbolic cosine of the number
+
+(xv) Hypotenuse: Hypot(base, prependicular): It returns the hypotenuse as per base and prependicular
+        ex: hypot(3,4)=5.0
+
+(xvi) Modf: modf(number): It divides the number into its fraction and integer value and returns output as  a pair of (fraction value, integer value)
+        ex: modf(2.5)=(0.5, 2.0)
+
+-->Numpy: NumPy (short for Numerical Python) is the foundational open-source Python library used for scientific computing, data analysis, and machine learning. It adds support for large, multi-dimensional arrays and matrices, along with a massive collection of high-level mathematical functions to operate on them efficiently
+        While Python lists are highly flexible because they can hold different data types, they are slow for processing massive datasets. 
+        NumPy solves this by introducing the ndarray (N-dimensional array).
+        NumPy arrays outperform standard Python lists due to several core mechanics:
+                (i): Speed (C-Based Core): NumPy is written mostly in C. This allows calculations to run at compiled-code speeds rather than interpreted Python speeds.
+                (ii): Contiguous Memory: Elements are stored right next to each other in memory. This allows your computer's processor to access and manipulate data drastically faster.
+                (iii):Homogeneous Data: Every element in a NumPy array must be of the exact same data type (e.g., all integers or all floats). This eliminates data type checking overhead during loops.
+                (iv): Vectorization: You can perform operations on an entire array at once without writing explicit for loops. For example, multiplying an entire array by 2 happens in one fast step.
+                (v): Broadcasting: This feature allows mathematical operations to be performed between arrays of different shapes automatically.
+        Use library import: import numpy as np , here np is an alias for numpy
+        -->arr.shape: It return a tuple showing the number of elements in each dimension of the array.
+                ex: arr = [1,2,3] 
+                    print(arr.shape)-->OUTPUT:(3,)
+                ex: arr = [[1,2,3],[4,5,6]]
+                    print(arr.shape)-->OUTPUT:(2,3)
+                ex: arr = [[[1,2,3],[4,5,6]],[[7,8,9],[11,12,13]]]
+                    print(arr.shape)-->OUTPUT:(2,2,4)
+        -->arr.reshape(col,row): It reshape the array 
+                ex: arr = [[1,2,3],[4,5,6]]
+                    arr.reshape(3,2) = [[1 2]
+                                        [3 4]
+                                        [5 6]]
+        -->np.arange(start, end, step size): It creates array starting element from start value  till end vaue-1 using a jump of step size 
+                ex: np.arange(1,10,2): [1,3,5,7,9]
+        -->np.zeroes((row,col)): Creates an array containing zeroes for specified rows and columns
+        -->np.ones((rows, cols)):Creates an array containing ones for specified rows and columns
+
+-->Random: 
+(i): np.random.randint(start, end, size)
+        ex: np.random.randint(3,10): gives any random integer between 3-10
+        ex: np.random.randint(3,10,4): gives four random integer between 3-10 
+                array([4,6,7,8])
+(ii): np.random.randn(): It gives random initialisation based on normal distribution whose mean is zero and standard deviation is 1.
+        ex: np.random.randn(5,7): Assign values to array of 5 rows and 7 cols
+(iii): np.random.random_sample(rows, cols): Assigns float vlaues between 0 to 1.
+        ex: np.random.randn(5,7): Assign float values between 0-1 to array of 5 rows and 7 cols
+
+-->Panda: Built on top of the NumPy package, it provides fast and flexible data structures designed to make working with structured or tabular data (like spreadsheets, CSV files, or SQL tables) easy and intuitive.
+        ->Core Data Structures introduced by Panda:
+                Two primary data structures that Python does not have natively:
+                        (i): Series: A one-dimensional labeled array capable of holding any data type. 
+                                You can think of it as a single column in a spreadsheet.
+                        (ii): DataFrame: A two-dimensional, size-mutable, and tabular data structure with labeled axes (rows and columns). 
+                                You can think of it as an entire Excel worksheet or SQL table
+        ->Use Import Pandas as pd for using Panda library
+        ->Creating Dataframes in Python Panda:
+                pd.DataFrame(data=None, index=None, columns=None, dtype=None, copy=None)
+                        1: data: This is the actual data you want to put into the DataFrame.
+                                For example, using a dictionary:
+                                        import pandas as pd
+                                        data = {
+                                        "Name": ["Chetan", "Rahul", "Aman"],
+                                        "Age": [20, 21, 19]
+                                        }
+                                        df = pd.DataFrame(data)
+                                        print(df)
+                                        Output:
+                                                    Name    Age
+                                                0  Chetan   20
+                                                1   Rahul   21
+                                                2    Aman   19
+                                        Here:
+                                        data = {
+                                        "Name": [...],
+                                        "Age": [...]
+                                        }
+                                        becomes the columns of the DataFrame.
+
+                        2: index — row labels: You can specify your own row labels:
+                                df = pd.DataFrame(data, index=["A", "B", "C"])
+                                print(df)
+                                Output:
+                                            Name    Age
+                                        A  Chetan   20
+                                        B   Rahul   21
+                                        C    Aman   19
+                                If you don't provide index, Pandas automatically uses: 0, 1, 2, ...
+
+                        3: columns — column names/order: You can specify which columns you want:
+                                df = pd.DataFrame(data, columns=["Age", "Name"])
+                                print(df)
+                                Output:
+                                            Age    Name
+                                        0   20    Chetan
+                                        1   21    Rahul
+                                        2   19    Aman
+                                It can also be useful when creating a DataFrame from a list:
+                                data = [[1, "Chetan"], [2, "Rahul"], [3, "Aman"]]
+                                df = pd.DataFrame(data, columns=["ID", "Name"])
+                        
+                        4:dtype — data type: You can specify the data type:
+                                df = pd.DataFrame([[1, 2], [3, 4]], dtype=float)
+                                Result:
+                                            0    1
+                                        0  1.0  2.0
+                                        1  3.0  4.0
+        -->df.head(): It returns the starting 5 rows by default
+        -->df.tail(): It returns the last 5 rows by default
+        -->df.head(n): It returns the starting n rows
+        -->df.tail(n): It returns the last n rows 
+        -->df.info(): It tells abut the data types for each row and column in the dataframe
+        -->df.describe(): It gives you a statistical summary of the DataFrame's numerical columns.
+                ex:             col1      col2
+                        count  5.000000  5.000000
+                        mean   4.000000  5.000000
+                        std    3.162278  3.162278
+                        min    0.000000  1.000000
+                        25%    2.000000  3.000000
+                        50%    4.000000  5.000000
+                        75%    6.000000  7.000000
+                        max    8.000000  9.000000
+        -->selecting rows and columns in dataframe:
+                For Columns:
+                        df[['Col1', 'Col2']] = It will return all rows for Col1 and Col2 data only
+                        df['Col1'] = It will return one Col only with all rows and work as Series
+                For Rows:
+                        df.loc[['Row1', 'Row2']]
+                        df.loc['Row1']
+                For Both rows and columns filter:
+                        df.iloc[2:4,0:2]
+        -->Dataframe to arrays: DataFrame.values gives you the data inside the DataFrame as a NumPy array.
+                A DataFrame contains both data + labels (row index and column names). .values extracts just the underlying 2D data array.
+                Ex: df.values
+        -->df.isnull(): It checks every cell of the DataFrame for a missing/null value.
+                ex:     import pandas as pd
+                        import numpy as np
+
+                        df = pd.DataFrame({
+                        "Name": ["Chetan", "Rahul", None],
+                        "Age": [20, np.nan, 19]
+                        })
+
+                        print(df.isnull())
+                        Output:
+                                    Name    Age
+                                0  False   False
+                                1  False    True
+                                2   True   False
+        -->df.isnull().sum(): Now we take the result of isnull() and calculate the number of True values column-wise.
+        -->.unique(): Returns the different/unique values present in a column.
+        -->.value_counts(): Returns the frequency/count of each unique value.
+
+->Reading a CSV file in python using dataframe:
+        df = pd.read_csv(csvfilepath) //read_csv is an inbuilt fn and it will read the csv file
+        print(df)
+        skipinitialspace=True removes spaces immediately after the delimiter when reading the CSV.
+                ex:df = pd.read_csv(
+                        '../Data/data.csv',
+                        usecols=['Id', 'Name', 'Age'],
+                        skipinitialspace=True
+                        )
+        For tab separator use \t, for newline separator use \n
+
+->StringIO: StringIO is a class in Python's standard io module that allows you to treat text strings as file-like objects. It provides an in-memory stream for text I/O. This means you can read from or write to a string buffer using standard file methods (like .read() and .write()) without actually creating or interacting with a physical file on your hard drive
+        from io import StringIO
+                ex: data = ('col1,col2,col3\n'
+                                'a,b,c\n'
+                                'd,e,f\n'
+                                'g,h,i\n')
+                    df = read_csv(StringIO(data))
+                    print(df.head())
+                Output:    col1 col2 col3
+                        0    a    b    c
+                        1    d    e    f
+                        2    g    h    i
+
+->Reading a JSON file in python using dataframe:
+        1: Read JSON: df = pd.read_json('../Data/jsondata.json')
+                Reads a JSON file and converts it into a Pandas DataFrame.
+
+        2: Write DataFrame to JSON: df.to_json('../Data/test.json', orient='records', indent=4)
+                orient='records' → each row becomes a JSON object.
+                indent=4 → formats JSON with 4-space indentation for readability.
+        
+        3: json_normalize(): df = pd.json_normalize(data)
+                Converts nested JSON/dictionary data into a flat DataFrame.
+
+        record_path: pd.json_normalize(data, record_path='skills')
+                Specifies a nested list whose elements should become separate rows.
+
+        meta: pd.json_normalize(data, record_path='skills', meta=['name', 'city'])
+                Includes selected parent-level fields along with the rows created from record_path.
+        
+        max_level: pd.json_normalize(data, max_level=1)
+                max_level specifies how many levels of nested dictionaries should be flattened.
+                        max_level=0 → No flattening of nested dictionaries.
+                        max_level=1 → Flatten only the first level.
+                        max_level=2 → Flatten up to two levels.
+                        If max_level is not specified → All possible levels are flattened.
+
+->Reading a HTML file in python using dataframe:
+        df = pd.read_html(data) : It will read all the tables from this data and show all tables
+        
+->Reading a XML(eXtensible Markup Language) file in python using dataframe:
+        df = pd.read_xml(data) : It will read all the tables from this data and show all tables
+        xpath=XPath (XML Path Language) is used to find/select specific elements or data inside an XML document.
+        Namespace: An XML namespace is used to avoid naming conflicts when different XML vocabularies use the same tag names.

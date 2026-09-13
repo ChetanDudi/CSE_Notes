@@ -1,0 +1,486 @@
+OOPS NOTES:
+
+-->Objects are the entities in the real world
+-->Objects are the instances of the class
+-->Classes are the blueprints of these objects
+
+-->Size:
+        -->sizeof(object) gives the total memory occupied by that object including all its properties.
+        -->If class dont have any properties, then it will occupy 1 byte of memory.
+        -->sizeof(class_name) gives the total memory occupied by that class including all its properties.
+        -->To ensure that two distinct objects have distinct addresses it must occupy at least 1 byte of memory.
+        -->Because static members are stored separately (in global memory), not inside each object, they do not contribute to the size of the object or class.
+
+-->Padding:It is the extra memory added to the data members of the class to make it aligned according to the architecture of the system.
+            It is done to make data access faster.
+            It is added after the data members of the class.
+            It is added in such a way that each data member starts at an address that is a multiple of its size.
+
+-->Greedy Alignment:It is the process of aligning data members of the class in such a way that each data member starts at an address that is a multiple of its size.
+                    It may lead to wastage of memory due to padding.
+
+-->Object Initilization:
+        1:Static Initilization:Object is created at compile time(Access using . operator).
+                class_name object_name(parameters) or class_name object_name;
+        2:Dynamic Initilization:Object is created at run time using new keyword(Access using -> operator).
+                class_name *object_name=new class_name(parameters);
+                class_name *object_name=new class_name;
+
+-->Access Modifiers:
+    1:Private:Data and methods are only accessible inside the class
+    2:Public:Data and methods are accessible to everyone
+    3:Protected:Data and methods are accessible inside class and to its derived classs.
+
+-->Encapsulation:It is wrapping up of data and member functions in a single unit called class.
+                 Encapsulation means binding data (variables) and functions (methods) that operate on that data into a single unit — the class.
+                 It helps in data hiding by making some properties as private or protected.
+                 Why Encapsulation is Used:
+                    Data Protection / Security:
+                    → Prevents external code from putting the object into an invalid state.
+                    (Example: marks can’t be negative because we control how it’s set.)
+
+                    Control Access:
+                    → Using get and set methods, you decide who can read or modify data.
+
+                    Code Maintainability:
+                    → You can change the internal logic later without affecting other code.
+
+                    Modularity:
+                    → Each class acts like a separate component, easier to debug and reuse.
+
+                    Abstraction:
+                    → Hides internal implementation; only public interface is exposed.
+
+-->Abstraction:Hiding all unnecessary details and showing only the important parts.
+               We cannot create objects for abstract classes.
+               
+-->Inheritance:When properties and member functions of base class are pass onto the derived class.
+               First parent constructor is called then of its derived class and destructors are called in reverse order.
+               Private members can never be inherited
+               If parent classes have same function names as of derived class, then derived class function is called.
+               If there are multiple parent classes and they have same function name for a function, then use object_name.parent_class_name::function_name() to call that function.
+
+                /*#include<iostream>
+                #include<string>
+                using namespace std;
+
+                class person
+                {
+                    public:
+                        person(string name,int age)
+                        {
+                            this->name=name;
+                            this->age=age;
+                        }
+                        string name;
+                        int age;
+                };
+
+                class student:public person      #if multiple classes to be inherit, then class student:public person,public class_name   #separate by comma
+                {
+                    public:
+                    student(string name,int age,string roll_no):person(name,age)
+                    {
+                        this->roll_no=roll_no;
+                    }
+                    string roll_no;
+                    void getinfo()
+                    {
+                        cout<<"Student name is "<<name<<endl;
+                        cout<<"Student age is "<<age<<endl;
+                        cout<<"Student roll number is "<<roll_no<<endl;
+                    }
+                };
+            int main()
+                {
+                    student s1("Chetan",22,"2022CSB1074");
+                    s1.getinfo();
+                }*/
+
+-->Polymorphism:It is the ability of the objects to take on different forms or behave in different ways depending on the context in which they are used.
+                Ex: Constructor overloading
+
+-->Constructor overloading: It is the way in which different constructors invoke from the class
+                            depending on the parameters we pass to the object during its creation.
+-->Function overloading:More than one functions in the same class but with different number of parameters and object calls the suitable/required functions for it.
+                        Static functions are resolved during compile time so static functions can be overloaded with different parameters.
+
+-->Types of Polymorphism:
+    1:Compile time Polymorphism:
+        We get to know the output during the compile time. Ex: Contructor Overloading, Function Overloading
+    2:Run Time Polymorphism:
+        We get to know the output during the run time. Ex: Function Overriding
+
+-->Function Overriding:Parent and Child classes both contains the same function with different implementations.
+                       The parent class is said to be overridden.
+                       Static functions are resolved during compile time so static functions cannot be overridden and these functions belong to class not to the object.
+
+-->Constructor: Same name as of class.
+                Does not have any return type.
+                Only called once at the time of object creation.
+                Memory allocation happens when constructor is called.
+                It is automatically invoke during object creation.
+                Types of Constructor:
+                    1:Parameterised:which takes some parameters
+                    2:Non-parameterised
+                    3:Copy constructor
+                We can create (this) pointer which point at the memory location of that object.
+
+-->This pointer is created because if parameters of constructor or properties of objects are same, then we can show objects properties using this
+        this->dept=dept;
+        this->prop=*(this).prop;
+    this is a pointer which points to the current object.
+        
+-->Copy Constructor: Type of Constructor which makes a copy of all properties of an existing object.
+                     Syntax: class_name (class_name &obj);
+                     We use & to avoid infinite recursion because if we dont use &, thenw it will keep calling copy constructor again and again.
+                     Both objects will have different memory addresses.
+                     It creates shallow copy by default.
+
+-->Shallow Copy:It copies all of the member values from one object to another.
+                If the member is a pointer, then only the pointer value (memory address) is copied, not the actual data it points to, so both objects will point to the same memory location for that member.
+                It creates different memory addresses for those properties which are not pointers.
+                            +-------------------+
+                        s1 -> | roll = 101        |
+                            | marks -----------+|   
+                            +-------------------+\
+                                                    \
+                                                    \  (shared memory)
+                                                    \
+                                                    v
+                                                +---------------+
+                                                | *marks = 75   |  (heap memory)
+                                                +---------------+
+                                                    ^
+                            +-------------------+/  
+                        s2 -> | roll = 101        |
+                            | marks -----------+|  (same pointer address!)
+                            +-------------------+
+
+-->Deep Copy:It not only copies the member values but also makes copies of any dynamically allocated memory that the member points to.
+             If the member is a pointer, then it allocates new memory and copies the actual data from the source object to the destination object, so both objects will have their own separate copies of the data.
+             It creates different memory addresses for all properties including pointers.
+                        
+
+-->Code for Constructor:
+        /*#include <bits/stdc++.h>
+        #include<string>
+        using namespace std;
+
+        class Cricket
+        {
+            public:
+                Cricket()
+                {
+                    teamB="Unknown";
+                }
+                string teamA;
+                string teamB;
+                string Current_score_teamA;
+                string Current_score_teamB;
+
+                void details()
+                {
+                    cout<<"team A is "<<teamA<<endl;
+                    cout<<"team B is "<<teamB<<endl;
+                    cout<<"current score of "<<teamA<<" is "<<Current_score_teamA<<endl;
+                    cout<<"current score of "<<teamB<<" is "<<Current_score_teamB<<endl;
+                }
+        };
+
+        int main() 
+        {
+            Cricket obj1;
+            obj1.teamA="India";
+            //obj1.teamB="Australia";
+            obj1.Current_score_teamA="256-7";
+            obj1.Current_score_teamB="0";
+            obj1.details();
+        }
+
+        //if obj1.teamB="Australia", this line is uncommented, then output for teamBis Australia irrespective of the constructor 
+        //created inside the class but if we make it commented, then output for teamB will be Unknown.*/
+
+-->Destructor: Same name as of class but preceded by ~ symbol.
+                Does not have any return type.
+                Only called once at the time of object destruction.
+                Memory deallocation happens when destructor is called.
+                It is called automatically invoke during object destruction.
+                It is used to free up the memory allocated to the object during its creation.
+                It is used to perform cleanup activities before the object is destroyed.
+                It is called automatically when the object goes out of scope or is explicitly deleted using delete keyword.
+                We cannot overload destructor.
+                It is automatically called for static objects when they go out of scope but for dynamic objects we have to manually call it.
+                Representation: ~class_name()
+
+-->Static members:Members which are shared among all the objects of the class.
+                   Memory allocation happens only once for static members.
+                   We can access static members using class name also without creating any object of that class.
+                   Static members are used to keep track of data shared by all objects of the class.
+                   Ex: Total number of objects created from that class.
+                    Static members are initialized outside the class using scope resolution operator(::).
+                    int class_name::static_member_name=value;
+
+-->Instance members:Members which are unique to each object of the class.
+                    Each object has its own copy of instance members.
+                    Memory allocation happens for each object created from that class.
+                    We access instance members using the object of that class.
+                    Ex: Name,age,roll number of student objects created from student class.
+
+-->Static functions:Functions which can access only static members of the class.
+                    They cannot access instance members of the class directly.
+                    We can call static functions using class name without creating any object of that class.
+                    Static functions are used for operations that do not depend on instance-specific data.
+                    They dont have "this" pointer.
+                    Ex: Function to get total number of objects created from that class.
+                
+-->const data members:Data members whose value cannot be changed after initialization.
+                        They must be initialized using initializer list in the constructor.
+                        They are used to represent properties that shou ld remain constant for the lifetime of the object.
+                        Ex: Roll number of student which should not change after object creation.
+
+-->Friend function:Function which is not a member of the class but has access to its private and protected members.
+                    It is declared using friend keyword inside the class.
+                    It is used to perform operations that require access to private or protected members of the class.
+                    Ex: Function to compare two objects of the same class based on their private data members.
+                        /*#include <iostream>
+                        using namespace std;
+
+                        class Box {
+                            private:
+                                double width;
+                            public:
+                                Box(double w) : width(w) {}
+                                // Declare friend function
+                                friend void printWidth(Box box);
+                        };
+
+                        // Define friend function
+                        void printWidth(Box box) {
+                            // Access private member
+                            cout << "Width of box: " << box.width << endl;
+                        }
+
+                        int main() {
+                            Box box(10.5);
+                            printWidth(box); // Call friend function
+                            return 0;
+                        }*/
+
+                -->We can still create object of a class if its constructor is private by singleton design pattern or friend function.
+                         Ex:class test
+                            {
+                                test()
+                                {
+                                    cout<<"Private Constructor called"<<endl;
+                                }
+                                friend test *createObject();
+                            };
+
+                            test *createObject()
+                            {
+                                return new test();
+                            }
+
+                            int main() 
+                            {
+                                test *obj=createObject();
+                                return 0;
+                            }
+
+-->Volatile keyword:It is used to inform the compiler that a variables value may change at any time, without any action being taken by the code the compiler finds nearby.
+                        It prevents the compiler from optimizing the code in a way that assumes the value of the variable cannot change unexpectedly.
+                        It is commonly used in embedded systems programming, where variables may be modified by hardware or other concurrent processes.
+                        Tells the compiler that the variables value can change anytime, even if your code does not modify it.
+                        Used when a variable can be changed by hardware or another thread (e.g., I/O registers, sensor data).
+                        Ex: Register values, shared memory locations, hardware status flags.
+                
+-->Diamond Problem:It is the ambiguity that arises when two classes B and C inherit from a common base class A, and a class D inherits from both B and C.
+                    If class A has a member function that is overridden in both B and C, and class D tries to call that function, it becomes ambiguous as to which version of the function should be called.
+                    To resolve this ambiguity, we can use virtual inheritance, which ensures that only one instance of the base class A is shared among the derived classes B and C.
+                    This way, when class D inherits from both B and C, it will have a single instance of class A, eliminating the ambiguity.
+                    Ex:
+                            +-------------------+
+                            |        A          |
+                            +-------------------+
+                             /                 \
+                            /                   \
+                     +-----------+         +-----------+
+                     |     B     |         |     C     |
+                     +-----------+         +-----------+
+                            \                   /
+                             \                 /
+                            +-------------------+
+                            |        D          |
+                            +-------------------+
+                    class A
+                    {
+                        public:
+                        void callfun()
+                        {
+                            cout<<"Animal Class Constructor called"<<endl;
+                        }
+                    };
+
+                    class B:virtual public A
+                    {
+
+                    };
+
+                    class C:virtual public A
+                    {
+
+                    };
+
+                    class D:public B,public C
+                    {
+
+                    };
+
+                    int main()
+                    {
+                        D d1;
+                        d1.callfun();
+                        return 0;
+                    }
+        
+-->Virtual Base Class:It is a class that is declared as virtual in the inheritance hierarchy.
+                      It is used to prevent multiple instances of a base class when it is inherited by multiple derived classes.
+                      When a class is declared as a virtual base class, only one instance of that class is created, regardless of how many derived classes inherit from it.
+                      This is particularly useful in cases where multiple inheritance is used, and it helps to avoid the diamond problem.
+ 
+-->Abstract Classes:It is a class that cannot be instantiated.
+                    It is used as a base class for other classes.
+                    It contains at least one pure virtual function.
+                    A pure virtual function is a function that is declared in the base class but has no implementation.
+                    It is declared by assigning 0 to the function declaration in the base class.
+                    Ex:
+                        class Shape
+                        {
+                            public:
+                                virtual void draw()=0; //pure virtual function
+                        };
+
+                        class Circle:public Shape
+                        {
+                            public:
+                                void draw()
+                                {
+                                    cout<<"Drawing Circle"<<endl;
+                                }
+                        };
+
+                        class Square:public Shape
+                        {
+                            public:
+                                void draw()
+                                {
+                                    cout<<"Drawing Square"<<endl;
+                                }
+                        };
+
+                        int main()
+                        {
+                            Shape *s1=new Circle();
+                            s1->draw();
+
+                            Shape *s2=new Square();
+                            s2->draw();
+
+                            return 0;
+                        }
+
+-->Pure Virtual Functions:It is a function that is declared in the base class but has no implementation.
+                            It is declared by assigning 0 to the function declaration in the base class.
+                            It is used to create abstract classes.
+                            It must be overridden in the derived class.
+                            Ex:
+                                class Shape
+                                {
+                                    public:
+                                        virtual void draw()=0; //pure virtual function
+                                };
+
+-->Abstract Class vs Interface:
+    1:Abstract Class:
+        -->Can have both abstract (pure virtual) and concrete (implemented) methods.
+        -->Can have member variables.
+        -->Supports multiple inheritance. 
+        -->Can have constructors and destructors.
+    2:Interface:
+        -->All methods are abstract (pure virtual).
+        -->Cannot have member variables (only static constants).
+        -->Supports multiple inheritance.
+        -->Cannot have constructors or destructors.    
+    
+-->Malloc and Calloc:
+    1:malloc():
+        -->Stands for memory allocation.
+        -->Allocates a single block of memory of specified size.
+        -->Does not initialize the allocated memory (contains garbage values).
+        -->Returns a void pointer to the allocated memory.
+        -->Syntax: ptr = (castType*) malloc(size);
+        -->int *p = (int*) malloc(5 * sizeof(int));
+    2:calloc():
+        -->Stands for contiguous allocation.
+        -->Allocates multiple blocks of memory for an array of elements.
+        -->Initializes all allocated memory to zero.
+        -->Returns a void pointer to the allocated memory.
+        -->Syntax: ptr = (castType*) calloc(numElements, sizeOfElement);
+        -->int *p = (int*) calloc(5, sizeof(int));
+
+-->Wild Pointer:A wild pointer is a pointer that has not been initialized to a valid memory address.
+                It may point anywhere in memory (randomly).
+                Using it can crash your program or cause undefined behavior.
+                    Ex:
+                        int *p; //wild pointer
+                        *p = 10; //undefined behavior
+
+                    To fix it:
+                        int *p = NULL; //initialized to NULL
+                        p = (int*)malloc(sizeof(int)); //now points to valid memory
+                        *p = 10; //safe to dereference
+-->Dangling Pointer:A dangling pointer is a pointer that points to a memory location that has been freed or deallocated.
+                    Accessing or dereferencing a dangling pointer can lead to undefined behavior, crashes, or data corruption.
+                    Ex:
+                        int *p = (int*)malloc(sizeof(int)); //allocate memory
+                        *p = 10; //use the memory
+                        free(p); //deallocate memory
+                        *p = 20; //dangling pointer, undefined behavior
+                    To fix it:
+                        p = NULL; //set pointer to NULL after freeing
+
+-->Templates:Templates are a powerful feature in C++ that allow you to write generic and reusable code.
+                They enable you to create functions and classes that can work with different data types without duplicating code for each type.
+                There are two main types of templates: function templates and class templates.
+                1:Function Templates:
+                    Function templates allow you to create a single function definition that can work with different data types.
+                    The compiler generates the appropriate function code based on the data type used when the function is called.
+                    Syntax:
+                        template <typename T>
+                        T functionName(T arg1, T arg2) {
+                            // Function implementation
+                        }
+                    Example:
+                        template <typename T>
+                        T add(T a, T b) {
+                            return a + b;
+                        }
+
+                2:Class Templates:
+                    Class templates allow you to create a single class definition that can work with different data types.
+                    The compiler generates the appropriate class code based on the data type used when an object of the class is created.
+                    Syntax:
+                        template <typename T>
+                        class ClassName {
+                            // Class members
+                        };
+                    Example:
+                        template <typename T>
+                        class Box {
+                            private:
+                                T value;
+                            public:
+                                Box(T val) : value(val) {}
+                                T getValue() { return value; }
+                        };

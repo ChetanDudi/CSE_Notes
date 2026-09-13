@@ -1,0 +1,78 @@
+[
+    {
+        "id": 1,
+        "name": "Alice",
+        "age": 22,
+        "city": "Hyderabad",
+        "contact": {
+            "email": "alice@example.com",
+            "phone": "9876543210"
+        },
+        "education": {
+            "degree": "BTech",
+            "department": "Computer Science"
+        },
+        "skills": [
+            "Python",
+            "Pandas",
+            "SQL"
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Bob",
+        "age": 25,
+        "city": "Delhi",
+        "contact": {
+            "email": "bob@example.com",
+            "phone": "9876543211"
+        },
+        "education": {
+            "degree": "BTech",
+            "department": "Electronics"
+        },
+        "skills": [
+            "C++",
+            "Java",
+            "Git"
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Charlie",
+        "age": 20,
+        "city": "Mumbai",
+        "contact": {
+            "email": "charlie@example.com",
+            "phone": "9876543212"
+        },
+        "education": {
+            "degree": "BSc",
+            "department": "Mathematics"
+        },
+        "skills": [
+            "Python",
+            "NumPy",
+            "Statistics"
+        ]
+    },
+    {
+        "id": 4,
+        "name": "David",
+        "age": 28,
+        "city": "Bengaluru",
+        "contact": {
+            "email": "david@example.com",
+            "phone": "9876543213"
+        },
+        "education": {
+            "degree": "MTech",
+            "department": "Data Science"
+        },
+        "skills": [
+            "Python",
+            "Machine Learning",
+            "Pandas"
+        ]
+    }
+]

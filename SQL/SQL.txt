@@ -1,0 +1,185 @@
+\list: SHows all databases created until now
+\! cls: clear the screen in the sqlshell
+\d table_name: gives info about the data types;
+\dt: Show all tables in that database
+
+-->Database:
+    create database database_name; -->It creates a database named as database_name
+    drop database database_name; -->It deletes a database named as database_name
+
+-->Table:
+    -->create table table_name: -->It creates a table named as table_name
+            CREATE TABLE users (
+                userid INT PRIMARY KEY,
+                name VARCHAR(30),
+                year INT,
+                field VARCHAR(20)
+            );
+
+    -->drop table table_name; -->It deletes a table named as table_name
+
+    -->insert:
+            INSERT INTO users (userid, name, year, field)
+            VALUES
+                (1, 'Chetan', 4, 'BTech'),
+                (2, 'Manish', 4, 'BTech'),
+                (3, 'Nitish', 3, 'BTech'),
+                (4, 'Piyush', 2, 'PhD'),
+                (5, 'Pratap', 2, 'MTech');
+                          or
+            INSERT INTO users
+            VALUES
+                (1, 'Chetan', 4, 'BTech'),
+                (2, 'Manish', 4, 'BTech'),
+                (3, 'Nitish', 3, 'BTech'),
+                (4, 'Piyush', 2, 'PhD'),
+                (5, 'Pratap', 2, 'MTech');
+
+    -->update/modify:
+            UPDATE users
+            SET year = 1
+            WHERE id = 6;
+                                UPDATE users
+                                SET year = 1,field = 'BTech'
+                                WHERE id=7;
+                                                        UPDATE users
+                                                        SET year = 1,field = 'BTech'
+                                                        WHERE id=7 and Name='Chetan;
+
+    -->Delete:
+            DELETE FROM users
+            WHERE userid = 4;
+
+    --> NULL and NOT NULL:
+            SELECT *
+            FROM users
+            WHERE year IS NOT NULL;
+                                SELECT *
+                                FROM users
+                                WHERE year IS NULL;
+
+    -->Date: DATE format: 'YYYY-MM-DD'
+    -->Boolean: BOOLEAN values: TRUE / FALSE (can also use 't' / 'f')
+    -->IN and NOT IN:
+                UPDATE users
+                SET placed = FALSE
+                WHERE userid IN (1,2,3,4,5,6,7,8);
+    -->BETWEEN:
+                UPDATE users
+                SET placed = FALSE
+                WHERE userid BETWEEN 1 AND 8;
+
+    -->UNIQUE:Ensures no two rows have the same value in that column.
+    -->DEFAULT:Provides a default value if no value is supplied during insert.
+    -->CURRENT_DATE:Automatically inserts the current date into a DATE column.
+    -->SERIAL:for auto-incrementing
+
+            CREATE TABLE users (
+            userid SERIAL PRIMARY KEY,         -- auto-incrementing ID
+            name VARCHAR(30) NOT NULL,   
+            email VARCHAR(30) UNIQUE,        
+            year INT,                           -- numeric year
+            field VARCHAR(20) DEFAULT 'BTech', -- default field
+            joining_date DATE DEFAULT CURRENT_DATE, -- default to today
+            is_active BOOLEAN DEFAULT TRUE,    -- default TRUE
+            placed BOOLEAN DEFAULT FALSE       -- default FALSE
+        );
+
+    -->Distinct:
+            SELECT DISTINCT field FROM users;
+    -->Count:
+            SELECT COUNT(name) FROM users;
+            SELECT COUNT(DISTINCT name) FROM users;
+
+    -->Order By:
+            SELECT * FROM users
+            ORDER BY year DESC;
+                   or
+            SELECT * FROM users
+            ORDER BY year;  //Asc by defualt
+    -->Limit:
+            SELECT * FROM users LIMIT 3;//it returns only 3 rows
+    -->Like: LIKE lets you search for a pattern inside a text column using wildcards
+                SELECT * FROM users WHERE name LIKE 'C%';
+                SELECT * FROM users WHERE name ILIKE 'chetan';
+
+Wildcard	        Meaning	                        Example	            Matches
+  %	        Any number of characters	              'C%'	        Chetan, Chris
+  _	          Exactly one character	                  '_a%'	        Manish, Ravi
+LIKE	      Case-sensitive match	                  'C%'	        Chetan only
+ILIKE	    Case-insensitive match	                  'c%'	        Chetan, chetan
+
+    -->Group By:
+            SELECT field, COUNT(*) AS total_students FROM users GROUP BY field;
+            SELECT field, year, COUNT(*) AS total_students FROM users GROUP BY field, year ORDER BY field ASC, year DESC;
+
+
+    -->Alter:
+        1:Add New Column:    
+                ALTER TABLE users ADD COLUMN phone VARCHAR(15);
+        2:Drop a Column:
+                ALTER TABLE users DROP COLUMN phone;
+        3:Rename a Column:
+                ALTER TABLE users RENAME COLUMN phone TO contact;
+
+    -->Check:
+            ALTER TABLE users ADD COLUMN mob VARCHAR(10) CHECK (LENGTH(mob) BETWEEN 1 AND 10);
+    -->Foreign Key:
+            CREATE TABLE child_table (
+            column_name datatype,
+            FOREIGN KEY (column_name) REFERENCES parent_table(parent_column)
+            );
+
+    -->JOINS:
+        1:CROSS JOIN:Returns all combinations of rows from both tables (Cartesian product).
+            EX:1:
+                SELECT c.name, o.order_id
+                FROM customers c
+                CROSS JOIN orders o;
+            EX:2:
+                SELECT * FROM customers CROSS JOIN orders;
+            If customers has 5 rows and orders has 5 rows → 25 rows in result.
+
+        2:INNER JOIN:Returns only the rows that have matching values in both tables.
+            Ex:1:
+                SELECT c.name, o.order_id, o.order_date
+                FROM customers c
+                INNER JOIN orders o
+                ON c.cus_id = o.cus_id;
+            Only customers with orders will appear.
+
+        3:LEFT JOIN (LEFT OUTER JOIN):Returns all rows from the left table, even if there’s no match in the right table.
+        Missing right table values are shown as NULL.
+        EX:1:
+            SELECT c.name, o.order_id, o.order_date
+            FROM customers c
+            LEFT JOIN orders o
+            ON c.cus_id = o.cus_id;
+        Shows all customers, including those with no orders.
+
+        4:RIGHT JOIN (RIGHT OUTER JOIN):Returns all rows from the right table, even if there’s no match in the left table
+        Missing left table values are shown as NULL.
+        EX:1:
+            SELECT c.name, o.order_id, o.order_date
+            FROM customers c
+            RIGHT JOIN orders o
+            ON c.cus_id = o.cus_id;
+        Shows all orders, including those without corresponding customers.
+
+        5:FULL OUTER JOIN (OUTER JOIN):Returns all rows when there’s a match in either left or right table.
+        Missing values are shown as NULL.
+        EX:1:
+            SELECT c.name, o.order_id, o.order_date
+            FROM customers c
+            FULL JOIN orders o
+            ON c.cus_id = o.cus_id;
+        Shows all customers and all orders.
+
+    -->Extraction:
+            SELECT 
+            EXTRACT(YEAR FROM placed_date) AS year,
+            EXTRACT(MONTH FROM placed_date) AS month,
+            EXTRACT(DAY FROM placed_date) AS day
+            FROM placed_orders;
+
+
