@@ -1,0 +1,1260 @@
+GITHUB COMMANDS — COMPLETE QUICK REFERENCE
+=============================================
+
+Purpose:
+This file contains Git/GitHub commands in the practical order used for a local project,
+plus common commands for daily work, branches, undoing mistakes, remotes, history,
+stashing, tags, and common problems.
+
+IMPORTANT:
+- Git = version control system running on your computer.
+- GitHub = online service where the Git repository can be stored/shared.
+- Most commands below are run inside the project folder in Command Prompt,
+  PowerShell, Git Bash, or the VS Code terminal.
+
+============================================================
+1. FIRST-TIME SETUP FOR A NEW LOCAL PROJECT
+============================================================
+
+STEP 1 — Go to the project folder
+---------------------------------
+Command:
+    cd "C:\path\to\your\project"
+
+What it does:
+    Changes the terminal's current directory to your project folder.
+
+Check current location:
+    cd
+or:
+    pwd
+
+For our NOTES project:
+    C:\Users\CHETAN DUDI\OneDrive\Desktop\NOTES
+
+
+STEP 2 — Initialize Git
+-----------------------
+Command:
+    git init
+
+What it does:
+    Creates a hidden .git folder and turns the current folder into a Git repository.
+
+Use this ONLY once for a project that is not already a Git repository.
+
+Check:
+    git status
+
+
+STEP 3 — Create .gitignore BEFORE staging files
+-----------------------------------------------
+Command:
+    notepad .gitignore
+
+What it does:
+    Creates/opens a .gitignore file.
+
+Example:
+    *.exe
+    .vscode/
+
+What .gitignore does:
+    Tells Git which files/folders should NOT be tracked.
+
+Typical things to ignore:
+    *.exe
+    *.obj
+    *.class
+    .vscode/
+    bin/
+    obj/
+    __pycache__/
+    .env
+
+IMPORTANT:
+    .gitignore does NOT delete files from your computer.
+    It only tells Git not to track matching files.
+
+
+STEP 4 — See repository status
+------------------------------
+Command:
+    git status
+
+What it does:
+    Shows:
+    - current branch
+    - untracked files
+    - modified files
+    - deleted files
+    - staged files
+    - files ready for commit
+
+This is one of the most useful Git commands.
+
+
+STEP 5 — Stage files
+--------------------
+Command:
+    git add .
+
+What it does:
+    Stages all eligible changes in the current project.
+
+"." means:
+    Add changes from the current folder and its subfolders.
+
+Stage one file:
+    git add "COMPUTER NETWORKS/Networks.md"
+
+Stage one folder:
+    git add "COMPUTER NETWORKS/"
+
+Stage multiple files:
+    git add file1.txt file2.txt
+
+
+STEP 6 — Check staged files
+---------------------------
+Command:
+    git status
+
+What to check:
+    Make sure only the files you actually want to commit are under
+    "Changes to be committed".
+
+If unwanted files appear, fix .gitignore or unstage them before committing.
+
+
+STEP 7 — Create a commit
+------------------------
+Command:
+    git commit -m "Initial commit"
+
+What it does:
+    Saves the staged snapshot into local Git history.
+
+-m means:
+    Message for the commit.
+
+Good examples:
+    git commit -m "Initial commit"
+    git commit -m "Added computer networks notes"
+    git commit -m "Updated sorting notes"
+
+
+STEP 8 — Rename current branch to main
+--------------------------------------
+Command:
+    git branch -M main
+
+What it does:
+    Renames the current branch to "main".
+
+Useful when setting up a new repository.
+
+
+STEP 9 — Connect local repository to GitHub
+-------------------------------------------
+Command:
+    git remote add origin https://github.com/USERNAME/REPOSITORY.git
+
+For our repository:
+    git remote add origin https://github.com/ChetanDudi/CSE_Notes.git
+
+What it does:
+    Connects the local Git repository to the GitHub repository.
+
+"origin" is the conventional name for the main remote repository.
+
+
+STEP 10 — Check remote
+----------------------
+Command:
+    git remote -v
+
+What it does:
+    Shows the URLs configured for the remote repository.
+
+Expected:
+    origin  https://github.com/ChetanDudi/CSE_Notes.git (fetch)
+    origin  https://github.com/ChetanDudi/CSE_Notes.git (push)
+
+
+STEP 11 — Push to GitHub
+------------------------
+Command:
+    git push -u origin main
+
+What it does:
+    Uploads the local "main" branch and its commits to GitHub.
+
+-u means:
+    Sets origin/main as the upstream branch for the local main branch.
+
+After the first successful push, normally:
+    git push
+    is enough.
+
+
+============================================================
+2. THE NORMAL DAILY WORKFLOW
+============================================================
+
+Whenever you change/add notes:
+
+1. Check what changed:
+    git status
+
+2. Stage changes:
+    git add .
+
+3. Check what is staged:
+    git status
+
+4. Commit:
+    git commit -m "Updated notes"
+
+5. Upload to GitHub:
+    git push
+
+
+SHORT VERSION:
+    git add .
+    git commit -m "Updated notes"
+    git push
+
+
+============================================================
+3. DOWNLOAD AN EXISTING GITHUB REPOSITORY
+============================================================
+
+Command:
+    git clone https://github.com/USERNAME/REPOSITORY.git
+
+Example:
+    git clone https://github.com/ChetanDudi/CSE_Notes.git
+
+What it does:
+    Downloads the GitHub repository to your computer, including its history.
+
+Then:
+    cd CSE_Notes
+
+Check:
+    git status
+
+
+============================================================
+4. PULL CHANGES FROM GITHUB
+============================================================
+
+Command:
+    git pull
+
+What it does:
+    Downloads new changes from the configured remote and integrates them
+    into your current branch.
+
+Common use:
+    Someone changed the GitHub repository, or you changed it from another computer.
+
+More explicit:
+    git pull origin main
+
+
+============================================================
+5. FETCH VS PULL
+============================================================
+
+Command:
+    git fetch
+
+What it does:
+    Downloads information/commits from the remote but does NOT automatically
+    merge them into your current branch.
+
+Command:
+    git pull
+
+What it does:
+    Fetches remote changes and then integrates them into the current branch.
+
+Simple difference:
+    fetch = download/check remote changes
+    pull  = download + integrate remote changes
+
+
+============================================================
+6. PUSH
+============================================================
+
+Command:
+    git push
+
+What it does:
+    Uploads your local commits to the configured upstream remote branch.
+
+Explicit:
+    git push origin main
+
+First push:
+    git push -u origin main
+
+
+============================================================
+7. CHECK BRANCHES
+============================================================
+
+Command:
+    git branch
+
+What it does:
+    Lists local branches.
+
+Current branch is marked with *.
+
+Show all local + remote branches:
+    git branch -a
+
+Show remote branches:
+    git branch -r
+
+
+============================================================
+8. CREATE AND SWITCH BRANCHES
+============================================================
+
+Create branch:
+    git branch feature-name
+
+Switch branch:
+    git switch feature-name
+
+Create + switch in one command:
+    git switch -c feature-name
+
+Older equivalent:
+    git checkout -b feature-name
+
+Switch back to main:
+    git switch main
+
+
+============================================================
+9. MERGE A BRANCH
+============================================================
+
+First switch to the branch that should receive the changes:
+    git switch main
+
+Then:
+    git merge feature-name
+
+What it does:
+    Combines the changes/commits from feature-name into main.
+
+
+============================================================
+10. DELETE A BRANCH
+============================================================
+
+Delete local branch:
+    git branch -d feature-name
+
+Force delete:
+    git branch -D feature-name
+
+Delete remote branch:
+    git push origin --delete feature-name
+
+
+============================================================
+11. VIEW COMMIT HISTORY
+============================================================
+
+Basic:
+    git log
+
+Compact:
+    git log --oneline
+
+Graph:
+    git log --oneline --graph --all
+
+What it does:
+    Shows previous commits, their IDs, authors, dates, and messages.
+
+
+============================================================
+12. SEE WHAT CHANGED
+============================================================
+
+Command:
+    git diff
+
+What it does:
+    Shows changes that are NOT staged yet.
+
+Command:
+    git diff --staged
+
+What it does:
+    Shows changes that ARE staged and will go into the next commit.
+
+Command:
+    git status
+
+What it does:
+    Gives a simpler summary of changes.
+
+
+============================================================
+13. UNSTAGE A FILE
+============================================================
+
+Command:
+    git restore --staged filename
+
+Example:
+    git restore --staged "DSAC++/p.c++"
+
+What it does:
+    Removes the file from staging but keeps your actual file unchanged.
+
+Unstage everything:
+    git restore --staged .
+
+
+OLDER EQUIVALENT:
+    git reset HEAD filename
+
+
+============================================================
+14. DISCARD LOCAL CHANGES — USE CAREFULLY
+============================================================
+
+Command:
+    git restore filename
+
+What it does:
+    Discards unstaged changes in the file and restores the version from Git.
+
+WARNING:
+    Changes can be lost. Make sure you really want this.
+
+Discard all unstaged changes:
+    git restore .
+
+
+============================================================
+15. REMOVE A FILE FROM GIT AND COMPUTER
+============================================================
+
+Command:
+    git rm filename
+
+What it does:
+    Removes the file from the working folder and stages the deletion.
+
+Remove folder:
+    git rm -r foldername
+
+
+============================================================
+16. STOP TRACKING A FILE BUT KEEP IT ON COMPUTER
+============================================================
+
+Command:
+    git rm --cached filename
+
+Example:
+    git rm --cached "DSAC++/p.exe"
+
+What it does:
+    Removes the file from Git tracking but keeps the physical file on
+    your computer.
+
+Useful when:
+    A file was accidentally added and should now be ignored.
+
+Typical sequence:
+    Add the file pattern to .gitignore
+    git rm --cached filename
+    git add .
+    git commit -m "Ignore generated files"
+
+
+============================================================
+17. UNSTAGE EVERYTHING
+============================================================
+
+Command:
+    git reset
+
+What it does:
+    Removes files from the staging area but does NOT delete them.
+
+This was useful in our NOTES setup when we needed to add .gitignore
+before staging the final set of files.
+
+
+============================================================
+18. CHANGE THE LAST COMMIT MESSAGE
+============================================================
+
+Command:
+    git commit --amend -m "Correct commit message"
+
+What it does:
+    Replaces the most recent commit with a corrected version.
+
+Use carefully if the old commit has already been pushed.
+
+
+============================================================
+19. ADD SOMETHING TO THE LAST COMMIT
+============================================================
+
+Example:
+    git add .
+    git commit --amend --no-edit
+
+What it does:
+    Adds the newly staged changes to the previous commit without changing
+    its commit message.
+
+Avoid doing this to commits that other people are already working from.
+
+
+============================================================
+20. UNDO A COMMIT SAFELY
+============================================================
+
+Command:
+    git revert COMMIT_ID
+
+What it does:
+    Creates a NEW commit that reverses the changes made by an earlier commit.
+
+This is generally safer for commits already pushed/shared with others.
+
+
+============================================================
+21. RESET COMMITS — USE CAREFULLY
+============================================================
+
+Soft reset:
+    git reset --soft HEAD~1
+
+What it does:
+    Removes the latest commit from history but keeps its changes staged.
+
+Mixed reset (default):
+    git reset HEAD~1
+
+What it does:
+    Removes the latest commit but keeps the changes in the working folder
+    unstaged.
+
+Hard reset:
+    git reset --hard HEAD~1
+
+What it does:
+    Removes the latest commit AND discards the associated local changes.
+
+WARNING:
+    --hard can permanently remove work.
+
+
+============================================================
+22. STASH TEMPORARY CHANGES
+============================================================
+
+Command:
+    git stash
+
+What it does:
+    Temporarily stores uncommitted changes and gives you a clean working tree.
+
+List stashes:
+    git stash list
+
+Apply latest stash:
+    git stash apply
+
+Apply and remove latest stash:
+    git stash pop
+
+Delete a stash:
+    git stash drop
+
+
+============================================================
+23. REMOTE COMMANDS
+============================================================
+
+Show remotes:
+    git remote -v
+
+Add remote:
+    git remote add origin URL
+
+Change remote URL:
+    git remote set-url origin URL
+
+Remove remote:
+    git remote remove origin
+
+Show detailed remote information:
+    git remote show origin
+
+
+============================================================
+24. IF "REMOTE ORIGIN ALREADY EXISTS" APPEARS
+============================================================
+
+Error:
+    error: remote origin already exists.
+
+Check it:
+    git remote -v
+
+If the URL is correct:
+    Do nothing. Continue with:
+        git push -u origin main
+
+If the URL is wrong:
+    git remote set-url origin https://github.com/ChetanDudi/CSE_Notes.git
+
+
+============================================================
+25. IF "REPOSITORY NOT FOUND" APPEARS
+============================================================
+
+Possible causes:
+    - Repository name is wrong.
+    - GitHub username is wrong.
+    - Repository is private and you are not authenticated.
+    - Remote URL is wrong.
+    - You do not have permission.
+
+Check:
+    git remote -v
+
+Correct the URL:
+    git remote set-url origin https://github.com/ChetanDudi/CSE_Notes.git
+
+Then:
+    git push -u origin main
+
+
+============================================================
+26. IF "FAILED TO PUSH" / NON-FAST-FORWARD
+============================================================
+
+Typical message:
+    Updates were rejected because the remote contains work that you
+    do not have locally.
+
+First:
+    git pull --rebase origin main
+
+Then:
+    git push
+
+If conflicts occur, resolve them, then:
+    git add .
+    git rebase --continue
+
+If you do not want to continue the rebase:
+    git rebase --abort
+
+IMPORTANT:
+    Do not blindly use force push to solve this problem.
+
+
+============================================================
+27. IF GIT ASKS FOR LOGIN / AUTHENTICATION
+============================================================
+
+GitHub no longer accepts your normal GitHub account password for
+Git operations over HTTPS.
+
+Use GitHub's supported authentication method, such as:
+    - GitHub CLI authentication
+    - Personal Access Token (PAT) where appropriate
+    - Credential Manager / browser authentication
+
+Never put a password or token directly into source files.
+
+
+============================================================
+28. GITHUB CLI AUTHENTICATION
+============================================================
+
+If GitHub CLI (gh) is installed:
+
+    gh auth login
+
+What it does:
+    Starts GitHub authentication.
+
+Check authentication:
+    gh auth status
+
+Git itself still uses commands such as:
+    git push
+    git pull
+
+
+============================================================
+29. CHECK GIT VERSION
+============================================================
+
+Command:
+    git --version
+
+What it does:
+    Shows installed Git version.
+
+Example:
+    git version 2.x.x
+
+
+============================================================
+30. SET YOUR GIT NAME AND EMAIL
+============================================================
+
+Check:
+    git config --global user.name
+    git config --global user.email
+
+Set:
+    git config --global user.name "Your Name"
+    git config --global user.email "your-email@example.com"
+
+Show all configuration:
+    git config --list
+
+IMPORTANT:
+    The commit email can affect how GitHub associates commits with
+    your GitHub account.
+
+
+============================================================
+31. .GITIGNORE — COMMON EXAMPLES
+============================================================
+
+Example .gitignore:
+
+    # Executable files
+    *.exe
+    *.obj
+
+    # VS Code
+    .vscode/
+
+    # Python
+    __pycache__/
+    *.pyc
+
+    # Environment/secrets
+    .env
+
+    # Build output
+    bin/
+    obj/
+
+Meaning:
+    *.exe      = ignore all .exe files
+    .vscode/   = ignore the entire .vscode folder
+    __pycache__/ = ignore Python cache folders
+    .env       = ignore environment/secrets file
+
+
+============================================================
+32. IF A FILE IS ALREADY TRACKED, .GITIGNORE WON'T REMOVE IT
+============================================================
+
+Problem:
+    You add *.exe to .gitignore, but an already tracked .exe still appears.
+
+Fix:
+    git rm --cached filename.exe
+
+Then:
+    git add .
+    git commit -m "Stop tracking executable files"
+    git push
+
+For a tracked folder:
+    git rm -r --cached foldername
+
+
+============================================================
+33. RENAME A FILE
+============================================================
+
+Command:
+    git mv oldname.txt newname.txt
+
+What it does:
+    Renames a file and stages the change.
+
+Rename folder:
+    git mv oldfolder newfolder
+
+
+============================================================
+34. TAGS / RELEASE VERSIONS
+============================================================
+
+Create tag:
+    git tag v1.0
+
+Push tag:
+    git push origin v1.0
+
+Push all tags:
+    git push origin --tags
+
+List tags:
+    git tag
+
+What tags are for:
+    Marking important versions such as:
+    v1.0
+    v2.0
+    final
+
+
+============================================================
+35. CLONE + WORK ON AN EXISTING PROJECT
+============================================================
+
+    git clone https://github.com/ChetanDudi/CSE_Notes.git
+    cd CSE_Notes
+    git status
+
+Daily:
+    git pull
+    [make changes]
+    git add .
+    git commit -m "Updated notes"
+    git push
+
+
+============================================================
+36. CHECK CURRENT BRANCH
+============================================================
+
+Command:
+    git branch --show-current
+
+What it does:
+    Shows the branch currently checked out.
+
+Example:
+    main
+
+
+============================================================
+37. CHECK FILE HISTORY
+============================================================
+
+Command:
+    git log -- filename.txt
+
+What it does:
+    Shows commits that changed a particular file.
+
+
+============================================================
+38. FIND WHO CHANGED A LINE
+============================================================
+
+Command:
+    git blame filename.txt
+
+What it does:
+    Shows which commit/author last changed each line.
+
+Useful for:
+    Understanding where a particular change came from.
+
+
+============================================================
+39. SEARCH COMMIT HISTORY
+============================================================
+
+Command:
+    git log --grep="keyword"
+
+Example:
+    git log --grep="sorting"
+
+What it does:
+    Searches commit messages for the specified text.
+
+
+============================================================
+40. CLEAN UNTRACKED FILES — VERY CAREFUL
+============================================================
+
+Preview:
+    git clean -n
+
+What it does:
+    Shows untracked files that would be removed.
+
+Actually remove untracked files:
+    git clean -f
+
+Remove untracked directories too:
+    git clean -fd
+
+WARNING:
+    This deletes untracked files from the working directory.
+
+
+============================================================
+41. CHECK WHICH FILES ARE TRACKED
+============================================================
+
+Command:
+    git ls-files
+
+What it does:
+    Lists files currently tracked by Git.
+
+
+============================================================
+42. COMMON FIRST-PUSH PROBLEM: GITHUB REPO ALREADY HAS A README
+============================================================
+
+If the GitHub repository was created with a README/license/.gitignore,
+the remote may already have a commit.
+
+A normal first push may be rejected.
+
+Usually:
+    git pull --rebase origin main
+
+Then:
+    git push -u origin main
+
+If conflicts appear:
+    resolve the conflict
+    git add .
+    git rebase --continue
+
+IMPORTANT:
+    Do NOT overwrite a remote repository with force push unless you
+    fully understand what will be lost.
+
+
+============================================================
+43. CONFLICT BASICS
+============================================================
+
+If Git reports a merge/rebase conflict:
+
+1. Run:
+       git status
+
+2. Open the conflicted file.
+
+3. Look for:
+       <<<<<<<
+       =======
+       >>>>>>>
+
+4. Keep the correct content and remove the conflict markers.
+
+5. Stage it:
+       git add filename
+
+6. If merging:
+       git commit
+
+7. If rebasing:
+       git rebase --continue
+
+Abort merge:
+    git merge --abort
+
+Abort rebase:
+    git rebase --abort
+
+
+============================================================
+44. COMMON ERROR: "NOT A GIT REPOSITORY"
+============================================================
+
+Error:
+    fatal: not a git repository
+
+Meaning:
+    You are not currently inside a Git repository.
+
+Fix:
+    cd "C:\path\to\project"
+
+Check:
+    git status
+
+If this is a new project:
+    git init
+
+
+============================================================
+45. COMMON ERROR: "NOTHING TO COMMIT"
+============================================================
+
+Message:
+    nothing to commit, working tree clean
+
+Meaning:
+    There are no new changes to commit.
+
+Check:
+    git status
+
+If you expected changes:
+    - Save the file.
+    - Check .gitignore.
+    - Check whether the file is already committed.
+    - Check that you are in the correct project folder.
+
+
+============================================================
+46. CHECK WHETHER A FILE IS BEING IGNORED
+============================================================
+
+Command:
+    git check-ignore -v filename
+
+What it does:
+    Shows which .gitignore rule is causing the file to be ignored.
+
+
+============================================================
+47. LINE ENDING WARNINGS ON WINDOWS
+============================================================
+
+Example warning:
+    LF will be replaced by CRLF
+
+Meaning:
+    Git is warning about line-ending conversion between Unix-style LF
+    and Windows-style CRLF.
+
+Usually:
+    This is NOT an error.
+    Your files can still be committed and pushed normally.
+
+If you see this during:
+    git add .
+
+You normally do not need to stop.
+
+
+============================================================
+48. THE EXACT WORKFLOW USED FOR OUR CSE NOTES REPOSITORY
+============================================================
+
+Local folder:
+    C:\Users\CHETAN DUDI\OneDrive\Desktop\NOTES
+
+GitHub:
+    https://github.com/ChetanDudi/CSE_Notes
+
+Commands used:
+
+1.
+    git init
+
+    Created the local Git repository.
+
+2.
+    git reset
+
+    Unstaged files so .gitignore could be created/updated first.
+
+3.
+    Created .gitignore containing:
+        *.exe
+        .vscode/
+
+4.
+    git add .
+
+    Staged the notes/code/data files while excluding .exe and .vscode.
+
+5.
+    git status
+
+    Verified the files that were going to be committed.
+
+Next commands for the initial GitHub push:
+
+6.
+    git commit -m "Initial commit"
+
+7.
+    git branch -M main
+
+8.
+    git remote add origin https://github.com/ChetanDudi/CSE_Notes.git
+
+9.
+    git remote -v
+
+10.
+    git push -u origin main
+
+
+============================================================
+49. AFTER THE INITIAL PUSH — YOUR MAIN COMMANDS
+============================================================
+
+Whenever you update your CSE notes:
+
+    git status
+    git add .
+    git commit -m "Updated notes"
+    git push
+
+If working on another computer first:
+
+    git pull
+
+Then edit files and:
+
+    git add .
+    git commit -m "Updated notes"
+    git push
+
+
+============================================================
+50. MOST IMPORTANT COMMANDS TO MEMORIZE
+============================================================
+
+    git init
+        -> Start Git tracking for a local project.
+
+    git status
+        -> See what is happening.
+
+    git add .
+        -> Stage all eligible changes.
+
+    git commit -m "message"
+        -> Save staged changes in Git history.
+
+    git push
+        -> Upload commits to GitHub.
+
+    git pull
+        -> Get and integrate changes from GitHub.
+
+    git clone URL
+        -> Download a GitHub repository.
+
+    git branch
+        -> View branches.
+
+    git switch branch
+        -> Change branch.
+
+    git merge branch
+        -> Merge another branch.
+
+    git log --oneline
+        -> View compact commit history.
+
+    git diff
+        -> See unstaged changes.
+
+    git restore --staged file
+        -> Unstage a file.
+
+    git restore file
+        -> Discard unstaged changes in a file.
+
+    git reset
+        -> Unstage changes.
+
+    git revert COMMIT_ID
+        -> Create a new commit that reverses an old commit.
+
+    git stash
+        -> Temporarily save uncommitted changes.
+
+    git remote -v
+        -> View GitHub remote URL.
+
+    git rm --cached file
+        -> Stop tracking a file while keeping it locally.
+
+
+============================================================
+51. GOLDEN RULES
+============================================================
+
+1. Always run:
+       git status
+   when you are unsure what Git is doing.
+
+2. Before:
+       git add .
+   make sure .gitignore is configured correctly.
+
+3. Before:
+       git commit
+   check:
+       git status
+
+4. Before:
+       git push
+   make sure you know what commits you are uploading.
+
+5. Do not commit:
+       passwords
+       API keys
+       tokens
+       .env secrets
+       private credentials
+
+6. Do not use:
+       git push --force
+   casually.
+
+7. Be especially careful with:
+       git reset --hard
+       git clean -f
+       git clean -fd
+   because they can delete local work.
+
+8. Commit messages should describe the change:
+       "Added ring topology notes"
+       "Updated sorting algorithms"
+       "Added Python file handling notes"
+
+9. For a simple personal notes repository, the normal cycle is:
+       EDIT
+         ↓
+       git status
+         ↓
+       git add .
+         ↓
+       git commit -m "..."
+         ↓
+       git push
+
+
+============================================================
+END
+============================================================

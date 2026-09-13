@@ -119,7 +119,7 @@ Main advantage: Self-scalability
         Building C ───┘
 
 For example, a network connecting several university buildings or offices distributed across a city can be considered a metropolitan-scale network.
-![alt text](MAN.png)
+![alt text](assets/MAN.png)
 
 3. WAN — Wide Area Network: A WAN (Wide Area Network) covers a large geographical area, potentially connecting cities, countries, or continents.
 
@@ -163,7 +163,7 @@ The Internet is the most prominent example of a global wide-area network/network
         ->Disadvantages: Collisions, difficult troubleshooting, backbone failure affects 
                           communication, poor scalability, not fault tolerant.
         ->Broadcast: It basically broadcast the message as it sends signals to all nodes.
-![alt text](BusTopology.png)
+![alt text](assets/BusTopology.png)
                  
     2: Ring Topology: It is a topology in which each node is connected to exactly two    
                       other nodes, forming a closed circular path.
@@ -187,7 +187,7 @@ The Internet is the most prominent example of a global wide-area network/network
         ->Fault Tolerance: A **dual-ring** topology can provide better fault tolerance 
                            because data can use the other ring if one path fails.
         ->Bottleneck: A link can cause bottleneck it any of the link is a weak link.
-![alt text](RingTopology.png)
+![alt text](assets/RingTopology.png)
 
     3: Star Topology: It is a topology in which all nodes are directly connected to a
                       central device such as a switch or hub.
@@ -205,8 +205,8 @@ The Internet is the most prominent example of a global wide-area network/network
                       fault isolation is simple.
         ->Disadvantages: Requires more cable, depends on the central device, and failure 
                          of the central device can bring down the network.
-![alt text](StarTopology.png)
-![alt text](ExtendedStarTopology.png) 
+![alt text](assets/StarTopology.png)
+![alt text](assets/ExtendedStarTopology.png) 
 
     4: Mesh Topology: It is a topology in which nodes are connected to multiple or all 
                       other nodes, providing multiple paths for data transmission.
@@ -224,6 +224,6 @@ The Internet is the most prominent example of a global wide-area network/network
                          requires many connections.
         ->Full Mesh Connections: For n nodes, the number of direct links required is 
                                  n(n−1)/2.
-![alt text](MeshTopology.png)
+![alt text](assets/MeshTopology.png)
 
 -->
