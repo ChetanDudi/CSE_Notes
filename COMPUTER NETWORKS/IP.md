@@ -72,4 +72,26 @@
     -> Different Network: Device sends data to the default gateway/router, which forwards 
                           it toward the destination network.
     -> Internet is not required for communication between devices on the same local 
-       network.S
+       network.
+
+-->Default Gateway: A default gateway is the router/device through which a host sends data 
+                    when the destination is outside its own network.
+    -> Same Network: Data is sent directly to the destination device.
+    -> Different Network: Data is sent to the default gateway, which is usually the 
+                          router.
+    -> Why needed: A host can communicate directly within its local network, but it needs 
+                   a router to reach other networks.
+    -> Example:
+        -> PC IP: 192.168.1.10
+        -> Subnet Mask: 255.255.255.0
+        -> Default Gateway: 192.168.1.1
+        -> If destination = 192.168.1.20 → same network → direct delivery.
+        -> If destination = 8.8.8.8 → different network → send to 192.168.1.1 (gateway) 
+                             router forwards it.
+    ->Summary:
+        (i): Default Gateway: Router/device used to reach other networks.
+        (ii): Same Network: Send data directly.
+        (iii): Different Network: Send data to default gateway.
+        (iv): Usually: Default gateway is the local router's IP address.
+        (v): Main Role: Provides the path from the local network to other 
+                        networks/Internet.
