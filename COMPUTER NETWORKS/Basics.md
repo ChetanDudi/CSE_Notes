@@ -226,4 +226,3 @@ The Internet is the most prominent example of a global wide-area network/network
                                  n(n−1)/2.
 ![alt text](assets/MeshTopology.png)
 
--->

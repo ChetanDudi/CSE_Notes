@@ -1,0 +1,7 @@
+-->IP stands for Internet Protocol
+-->Every device is identified uniquely with the help of IP address
+-->IP is the virtual/logical address for a node and can be changed based on the location
+-->TP addresses can be assigned manually or dynamically 
+-->IPv4 has 32 bits(4 Bytes) and range from 0.0.0.0 to 255.255.255.255 where each octet has 8 bits
+-->Use command: ipconfig -> to view the IP address of the device
+-->Ex: 127.0.01, 10.0.0.1, 255.255.255.255, 0.0.0.0, 192.127.98.235, etc.
