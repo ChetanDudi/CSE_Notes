@@ -84,6 +84,33 @@ using namespace std;
       Maximum size of array outside main(globally) is 10^7 and if it is boolean then it is 10^8
       If array is declared inside main or any function, then it stored random garbage values if it is not manually initialised by any values
       If array is outside fns or main, which means it is global, then it is initialised with zero.
+      -->Rotate an array by k places: For a vector/array v of size n:
+        Left rotate by k:
+                #include <algorithm>
+                k %= n;
+                std::rotate(v.begin(), v.begin() + k, v.end());
+                -->another way is reversing:
+                        void leftRotate(vector<int>& nums, int k) {
+                        int n = nums.size();
+                        k %= n;
+
+                        reverse(nums.begin(), nums.begin() + k);
+                        reverse(nums.begin() + k, nums.end());
+                        reverse(nums.begin(), nums.end());
+                        }
+        Right rotate by k:
+                #include <algorithm>
+                k %= n;
+                std::rotate(v.begin(), v.end() - k, v.end());
+                -->another way is reversing:
+                        void rightRotate(vector<int>& nums, int k) {
+                        int n = nums.size();
+                        k %= n;
+
+                        reverse(nums.begin(), nums.end());
+                        reverse(nums.begin(), nums.begin() + k);
+                        reverse(nums.begin() + k, nums.end());
+                        }
 
 -->PAIR:// no need pair to be of same data type for both values
         pair<int,int> p={3,5};

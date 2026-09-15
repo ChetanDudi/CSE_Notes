@@ -429,3 +429,29 @@ Can use id(variable_name) for seeing memeory location of variable
         df = pd.read_xml(data) : It will read all the tables from this data and show all tables
         xpath=XPath (XML Path Language) is used to find/select specific elements or data inside an XML document.
         Namespace: An XML namespace is used to avoid naming conflicts when different XML vocabularies use the same tag names.
+
+-->Pickling and Unpickling: Pickling and unpickling are used to save Python objects to a file and load them back later.
+        1: Pickling: Converting a Python object into a byte stream so it can be stored in a file.
+                -> Module used: pickle
+                -> The resulting file contains the serialized object.
+                -> Useful for saving lists, dictionaries, objects, etc.
+        Flow: Python Object → Pickling → Byte Stream → File
+        Import pickle
+
+        2. Unpickling: Converting the stored byte stream back into the original Python object.
+        Flow: File → Unpickling → Byte Stream → Python Object
+        Import Unpickle
+
+        Pickling                vs                  Unpickling	                        
+        Object → Byte stream	                Byte stream → Object
+        Used for saving	                        Used for loading
+        pickle.dump()	                        pickle.load()
+        Usually uses wb	                        Usually uses rb
+
+-->Seaborn in Python: Seaborn is a Python library used for data visualization. It helps create attractive and informative graphs from data, especially when working with Pandas DataFrames.
+        -> Built on top of Matplotlib.
+        -> Provides simpler functions for creating statistical plots.
+        -> Works very well with Pandas.
+        -> Commonly used in Data Analysis, Data Science, and Machine Learning.
+        ->Use with: import seaborn as sns
+        ->We can also import some common inbuilt databases from seaborn using: df = sns.load_dataset('dataset_name') like iris, titanic, tips, penguins, and flights
