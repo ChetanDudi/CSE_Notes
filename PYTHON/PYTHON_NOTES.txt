@@ -455,3 +455,46 @@ Can use id(variable_name) for seeing memeory location of variable
         -> Commonly used in Data Analysis, Data Science, and Machine Learning.
         ->Use with: import seaborn as sns
         ->We can also import some common inbuilt databases from seaborn using: df = sns.load_dataset('dataset_name') like iris, titanic, tips, penguins, and flights
+
+-->Functions:
+        1: Positional Arguments: Arguments are passed according to the position/order of parameters.
+                def fun(name, age):
+                        print(name, age)
+                fun("Chetan", 23)
+                Output:
+                        → "Chetan" → name
+                        → 23 → age
+
+        2: Keyword Arguments: Arguments are passed using the parameter name, so order does not matter.
+                fun(age=23, name="Chetan")
+
+        3: *args: Used to accept any number of positional arguments. It stores them as a tuple.
+                def fun(*args):
+                        print(args)
+                fun(10, 20, 30)
+                Output: (10, 20, 30) as tuple
+
+        4:**kwargs: Used to accept any number of keyword arguments. It stores them as a dictionary.
+                def fun(**kwargs):
+                        print(kwargs)
+                fun(name="Chetan", age=23)
+                Output: {'name': 'Chetan', 'age': 23} as dictionary
+
+        5: Combined:
+                def fun(a, *args, **kwargs):
+                        print(a)
+                        print(args)
+                        print(kwargs)
+                fun(10, 20, 30, name="Chetan", age=23)
+        Output:
+                → a → first positional argument
+                → *args → remaining positional arguments → tuple
+                → **kwargs → keyword arguments → dictionary
+
+        Summary:
+        → Positional → based on order
+        → Keyword → based on name
+        → *args → multiple positional → tuple
+        → **kwargs → multiple keyword → dictionary
+
+-->

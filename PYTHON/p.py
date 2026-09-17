@@ -1,10 +1,4 @@
-import pandas as pd
-import numpy as np
-from io import StringIO
+def sum(a,b):
+        return a+b
 
-data = ('col1,col2,col3\n'
-        'a,b,c\n'
-        'd,e,f\n'
-        'g,h,i\n')
-df = pd.read_csv(StringIO(data))
-print(df.head())
+print(sum(2,4))
