@@ -95,3 +95,46 @@
         (iv): Usually: Default gateway is the local router's IP address.
         (v): Main Role: Provides the path from the local network to other 
                         networks/Internet.
+
+-->IPv4 Address Classes:
+    1: Class A:
+        -> Network bits: 8
+        -> Host bits: 24
+        -> Supports few networks, but very large networks.
+        -> Default mask: /8
+        -> Host addresses per network: about 16.7 million
+
+    2: Class B:
+        -> Network bits: 16
+        -> Host bits: 16
+        -> Provides a balance between number of networks and hosts.
+        -> Default mask: /16
+        -> Host addresses per network: about 65,534
+
+    3: Class C:
+        -> Network bits: 24
+        -> Host bits: 8
+        -> Supports many networks, but each network has few hosts.
+        -> Default mask: /24
+        -> Host addresses per network: 254
+
+    ->Why different classes?
+        -> The main idea was to divide the 32-bit IPv4 address between Network ID and Host 
+           ID according to network size.
+        -> More network bits → more possible networks, fewer hosts per network.
+        -> More host bits → fewer possible networks, more hosts per network.
+
+    ->Trade-off:
+        Class	 Network Bits	 Host Bits	   Networks	      Hosts/Network
+        A	        8	            24	        Few	            Very many
+        B	        16	            16	        Medium	        Medium
+        C	        24	            8	        Many	        Few
+
+
+    ->Classful vs Modern IPv4:
+        -> Class A/B/C used fixed network-host boundaries (/8, /16, /24).
+        -> This caused wastage of IP addresses because a network might need 1,000 hosts 
+           but Class C provides only 254, while Class B provides 65,534.
+        -> CIDR solves this by allowing flexible boundaries such as /20, /22, /27, etc.
+
+    
