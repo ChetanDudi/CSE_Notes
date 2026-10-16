@@ -1,0 +1,29 @@
+Kadane’s Algorithm: Used to find the maximum sum of a contiguous subarray in an array.
+--> Maintain two variables:
+    - currentSum → Maximum sum of a subarray ending at the current index.
+    - maxSum → Maximum subarray sum found so far.
+--> Logic:
+    - Add the current element to currentSum or start a new subarray from the current element, whichever gives the larger sum.
+    - Update maxSum if currentSum is greater than maxSum.
+int maxSubArray(vector<int>& arr) 
+{
+    int currentSum = arr[0];
+    int maxSum = arr[0];
+
+    for (int i = 1; i < arr.size(); i++) 
+    {
+        currentSum = max(arr[i], currentSum + arr[i]);
+        maxSum = max(maxSum, currentSum);
+    }
+
+    return maxSum;
+}
+
+
+--> Complexity:
+    - Time: (O(n)) — each element is processed once.
+    - Space: (O(1)) — only two variables are used.
+    - Passes: One traversal.
+    - Stable: Not applicable — the algorithm finds a maximum sum; it does not rearrange the array.
+
+--> If we need that subarray then use the curridx and when sum will become negative cases for indices.

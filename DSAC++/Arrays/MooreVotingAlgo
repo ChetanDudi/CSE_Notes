@@ -1,0 +1,44 @@
+Moore’s Voting Algorithm: Used to find the majority element in an array that appears more than (n/2) times.
+--> Maintain two variables:
+    - candidate → potential majority element.
+    - count → votes for the current candidate.
+--> Logic:
+    - If count == 0 → set the current element as candidate.
+    - If arr[i] == candidate → increment count.
+    - Otherwise → decrement count.
+    - If a majority element is not guaranteed to exist, verify the candidate by counting its occurrences in a second traversal.
+int majorityElement(vector<int>& arr) 
+{
+    int candidate = 0, count = 0;
+
+    for (int i = 0; i < arr.size(); i++) 
+    {
+        if (count == 0)
+        {
+            candidate = arr[i];
+            count=1;
+        }
+
+        if (arr[i] == candidate)
+        {
+            count++;
+        }
+        else
+        {
+            count--;
+        }
+    }
+
+    return candidate;
+}
+
+
+--> Complexity:
+- Time: (O(n)) — one traversal if a majority element is guaranteed; two traversals if verification is required.
+- Space: (O(1)) — only two variables are used.
+- Passes: One traversal, or two if verification is required(check if Majority elementis there or not, maybe not if all elements frequency is less than n/2)
+- Stable: Not applicable — the algorithm finds an element; it does not rearrange the array.
+--> Key idea:
+[candidate votes | cancelled pairs]
+Different elements cancel each other's votes. Since the majority element appears more than (n/2) times, it cannot be completely cancelled and remains the final candidate.
+Note: The code above assumes that a majority element is guaranteed to exist.
