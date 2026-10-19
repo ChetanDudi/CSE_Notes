@@ -315,3 +315,18 @@ using namespace std;
         Main advantage	        Ordering + guaranteed complexity	Fast average lookup
         Main disadvantage	Slower than hash table on average	No ordering + possible collisions
        
+-->unique(): Removes consecutive duplicate elements logically from a sorted range and returns an iterator to the new logical end. The container size remains unchanged.
+        Syntax:
+        unique(begin_iterator, end_iterator);
+        Ex: arr.unique(arr.begin(), arr.end());
+Note: unique() works on consecutive duplicates, so sorting first ensures all duplicates are adjacent.
+
+-->erase(): Physically removes elements from a container within the specified iterator range.
+        Syntax:
+        container.erase(start_iterator, end_iterator);
+        Ex: arr.erase(arr.begin(), arr.end());
+
+Ex:Usage together:
+        sort(v.begin(), v.end());
+        v.erase(unique(v.begin(), v.end()), v.end());
+
