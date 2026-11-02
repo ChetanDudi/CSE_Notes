@@ -331,3 +331,9 @@ Ex:Usage together:
         v.erase(unique(v.begin(), v.end()), v.end());
 
 -->Remember NcR (Permutations/Combinations' concept/formula) for Pascal Triangle questions or try to find a symmetry for creating formulas
+
+-->Deleting an entire row from a 2D arrya: array.erase(array.begin()+i)
+        It deletes that row and point, the next row moves in place of that row.
+        So, if you are iterating then make sure to do i--
+
+-->Deleting an entire column from a 2D array: array[i].erase(array[i].begin()+j);
